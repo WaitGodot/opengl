@@ -38,5 +38,22 @@
 #define BREAK_IF_LOG(_VALUE_,format,...) if(_VALUE_){ LOG_ERROR(format,##__VA_ARGS__);break;}
 #endif
 
+#ifndef RETURN_IF
+#define RETURN_IF(_VALUE_)	if (_VALUE_){return;}
+#endif
+
+#ifndef RETURN_IF_LOG
+#define RETURN_IF_LOG(_VALUE_,format,...) if(_VALUE_){ LOG_ERROR(format,##__VA_ARGS__);return;}
+#endif
+
+#ifndef DELETE_SAFE
+#define DELETE_SAFE(p) if(p){delete p ; p = 0;}
+#endif
+
+#ifndef DELETE_ARRAY_FAFE
+#define DELETE_ARRAY_FAFE(p) if(p){delete [] p ; p = 0;}
+#endif
+
+
 
 #endif

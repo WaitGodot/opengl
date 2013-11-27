@@ -1,5 +1,7 @@
 #include "GLShaderProgram.h"
 #include "_MacroConfig.h"
+#include "file/Fileutils.h"
+#include <gl/freeglut.h>
 
 namespace glShaderSpace {
 
@@ -24,8 +26,12 @@ namespace glShaderSpace {
 
 	bool GLShaderProgram::initWithVertexShaderByFile( const char* vertexFile,const char* fragmentFile )
 	{
-
-		return false;
+		unsigned long length = 0;
+		GLchar* vertArray = (GLchar*)gsShareFileUtils()->getFileData( vertexFile,"r",length);
+		vertArray[length] = '\0';
+		GLchar* fragArray = (GLchar*)gsShareFileUtils()->getFileData( fragmentFile,"r",length);
+		fragArray[length] = '\0';
+		return initWithVertexShaderByteArray(vertArray,fragArray);
 	}
 
 	bool GLShaderProgram::initWithVertexShaderByteArray( const GLchar* verterArray ,const GLchar* fragArray )
@@ -35,14 +41,15 @@ namespace glShaderSpace {
 		do 
 		{
 			BREAK_IF(verterArray == NULL || fragArray == NULL);
+			CHECK_GL_ERROR();
 			m_programIdentity = glCreateProgram();
 			BREAK_IF_LOG(m_programIdentity == 0,"create program error id = %d",m_programIdentity);
-			BREAK_IF(compile(vertexId,GL_VERTEX_SHADER,verterArray));
-			BREAK_IF(compile(fragId,GL_FRAGMENT_SHADER,fragArray));
+			BREAK_IF(!compile(vertexId,GL_VERTEX_SHADER,verterArray));
+			BREAK_IF(!compile(fragId,GL_FRAGMENT_SHADER,fragArray));
 
 			glAttachShader(m_programIdentity,vertexId);
 			glAttachShader(m_programIdentity,fragId);
-			BREAK_IF(link());
+			BREAK_IF(!link());
 
 			m_glLoction[_Vertex_Position] = glGetAttribLocation(m_programIdentity,AttributePosition);
 			m_glLoction[_Vertex_Color]    = glGetAttribLocation(m_programIdentity,AttributeColor);
@@ -112,8 +119,33 @@ namespace glShaderSpace {
 
 	GLint GLShaderProgram::getVertexAttLoction( VertexAttLoction attribute )
 	{
-		_ASSERT( attribute >= 0 && attribute <= _Vertxt_Count;"getVertexAttLoction error!");
+		_ASSERT( attribute >= 0 && attribute <= _Vertxt_Count,"getVertexAttLoction error!");
 		return m_glLoction[attribute];
+	}
+
+	void GLShaderProgram::use()
+	{
+		if(m_programIdentity){
+			glUseProgram(m_programIdentity);
+		}
+	}
+
+	GLShaderProgram* GLShaderProgram::createByFile( const char* vertexFile,const char* fragmentFile )
+	{
+		GLShaderProgram* program = new GLShaderProgram();
+		if(!program->initWithVertexShaderByFile(vertexFile,fragmentFile)){
+			DELETE_SAFE(program);
+		}
+		return program;
+	}
+
+	GLShaderProgram* GLShaderProgram::createByByte( const GLchar* verterArray ,const GLchar* fragArray )
+	{
+		GLShaderProgram* program = new GLShaderProgram();
+		if(!program->initWithVertexShaderByFile(verterArray,fragArray)){
+			DELETE_SAFE(program);
+		}
+		return program;
 	}
 
 

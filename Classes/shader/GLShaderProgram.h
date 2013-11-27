@@ -2,6 +2,7 @@
 #define _GL_SHADER_PROGRAM_H
 
 #include <gl/glew.h>
+#include <gl/GL.h>
 
 
 namespace glShaderSpace{
@@ -31,13 +32,16 @@ namespace glShaderSpace{
 		GLShaderProgram();
 		~GLShaderProgram();
 
+		static GLShaderProgram* createByFile(const char* vertexFile,const char* fragmentFile);
+		static GLShaderProgram* createByByte(const GLchar* verterArray ,const GLchar* fragArray);
+
 		bool initWithVertexShaderByFile(const char* vertexFile,const char* fragmentFile);
 		bool initWithVertexShaderByteArray(const GLchar* verterArray ,const GLchar* fragArray);
 		GLint getAttribLocation(const char* attribName);
 		GLint getUniformLocation(const char* uniformName);
-		
 		GLint getVertexAttLoction(VertexAttLoction attribute);
 
+		void use();
 	private:
 		bool compile(GLint& shaderId,GLenum type , const GLchar* array);
 		bool link();
