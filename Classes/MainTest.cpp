@@ -10,14 +10,14 @@ using namespace glShaderSpace;
 using namespace std;
 
 #include "base/Geometry.h"
-
+#include "base/Color.h"
 using namespace cxGeomety;
 
 void pointTest()
 {
 	Point pt;
-	pt = MakePoint(1,1);
-	Point pt1 = MakePoint(2,2);
+	pt = Point2f(1,1);
+	Point pt1 = Point2f(2,2);
 
 	Point result = pt + pt1;
 	result = pt - pt1;
@@ -69,31 +69,72 @@ void dumpInfo(void)
 	printf ("GLSL: %s\n", glGetString (GL_SHADING_LANGUAGE_VERSION));
 }
 
+
 void display()
 {
-	glClearColor(0,0,1,1);
+	glClearColor(0,0.4,0.6,1);
+	glClear(GL_COLOR_BUFFER_BIT);  
+	
+	drawColor(color3f(1.0f,0.0f,0.0f));
+	Point2f(0,0).render();	
+	drawColor(color3f(1.0f,1.0f,0.0f));
+	Point2f(0,0.1).render();
+// 
+// 	GLShaderProgram* progam = shareGLShaderManager()->getByKey(_Postion_Key);
+// 	progam->use();
+// 
+// 	GLint location = progam->getVertexAttLoction(_Vertex_Position);
+// 
+// 	GLfloat vertices[] = {
+// 		0.0f,  0.5f, 0.0f, 
+// 		-0.5f, -0.5f, 0.0f,
+// 		0.5f,  -0.5f, 0.0f };
+// 
+// 		glEnableVertexAttribArray(location);
+// 		CHECK_GL_ERROR();
+// 	glVertexAttribPointer(location, 3, GL_FLOAT, GL_FALSE, 0, vertices );
+// 	CHECK_GL_ERROR();
+// 	
+// 	glDrawArrays(GL_TRIANGLES, 0, 3);
+// 	CHECK_GL_ERROR();
 
 	glFlush();
+	glutSwapBuffers();
 	CHECK_GL_ERROR();
 }
 
 int main(int argc,char** argv)
 {
 
-	glutInitWindowSize(300,300);
-	glutInitWindowPosition(300,300);
-	glutInit(&argc,argv);
-	//glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
-	glutInitContextVersion (3, 1);
-	glutInitContextFlags (GLUT_FORWARD_COMPATIBLE | GLUT_DEBUG);
-	glutCreateWindow("Main");
+	glutInit(&argc, argv);
+	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
+	/* add command line argument "classic" for a pre-3.x context */
+	if ((argc != 2) || (strcmp (argv[1], "classic") != 0)) {
+		glutInitContextVersion (3, 1);
+		glutInitContextFlags ( GLUT_DEBUG);
+	}
+	glutInitWindowSize (500, 500); 
+	glutInitWindowPosition (100, 100);
+	glutCreateWindow (argv[0]);
+
+// 	glutInitWindowSize(300,300);
+// 	glutInitWindowPosition(300,300);
+// 	glutInit(&argc,argv);
+// 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
+// 	glutInitContextVersion (3, 1);
+//	glutInitContextFlags (GLUT_FORWARD_COMPATIBLE | GLUT_DEBUG);
+// 	glutCreateWindow("Main");
 	dumpInfo();
+	
 	GLint GlewInitResult = glewInit();
 	if (GLEW_OK != GlewInitResult) 
 	{
 		LOG_ERROR("ERROR: %s\n",glewGetErrorString(GlewInitResult));
 		exit(EXIT_FAILURE);
 	}
+
+	CHECK_GL_ERROR();
+	shareGLShaderManager()->init();
 
 	pointTest();
 	macroTest();

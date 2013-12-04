@@ -1,7 +1,9 @@
 //position fragment shader
-#version 330
+#version 140
 
+out vec4 vFragColor;
+in vec4 v_varyingFragColor;
 void main()
 {
-	gl_FragColor = vec4(1.0,0,0,1.0);
+	vFragColor = v_varyingFragColor;	
 }

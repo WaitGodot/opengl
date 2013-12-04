@@ -29,7 +29,7 @@ namespace glShaderSpace {
 		static GLShaderManager* shareShaderManager();
 	};
 
-#define shareGLShaderManager() GLShaderManager::shareShaderManager()
+#define shareGLShaderManager() glShaderSpace::GLShaderManager::shareShaderManager()
 
 }
 

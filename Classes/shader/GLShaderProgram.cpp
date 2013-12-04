@@ -34,6 +34,7 @@ namespace glShaderSpace {
 		return initWithVertexShaderByteArray(vertArray,fragArray);
 	}
 
+
 	bool GLShaderProgram::initWithVertexShaderByteArray( const GLchar* verterArray ,const GLchar* fragArray )
 	{
 		bool result = false;
@@ -42,11 +43,13 @@ namespace glShaderSpace {
 		{
 			BREAK_IF(verterArray == NULL || fragArray == NULL);
 			CHECK_GL_ERROR();
+			BREAK_IF(!compile(vertexId,GL_VERTEX_SHADER,verterArray));
+			CHECK_GL_ERROR();
+			BREAK_IF(!compile(fragId,GL_FRAGMENT_SHADER,fragArray));
+			CHECK_GL_ERROR();
+
 			m_programIdentity = glCreateProgram();
 			BREAK_IF_LOG(m_programIdentity == 0,"create program error id = %d",m_programIdentity);
-			BREAK_IF(!compile(vertexId,GL_VERTEX_SHADER,verterArray));
-			BREAK_IF(!compile(fragId,GL_FRAGMENT_SHADER,fragArray));
-
 			glAttachShader(m_programIdentity,vertexId);
 			glAttachShader(m_programIdentity,fragId);
 			BREAK_IF(!link());
@@ -84,7 +87,8 @@ namespace glShaderSpace {
 			glGetShaderiv(shaderId , GL_INFO_LOG_LENGTH,&lengthLog);
 			char* errLog = (char*)malloc( lengthLog);
 			glGetShaderInfoLog( shaderId, lengthLog , NULL , errLog);
-			LOG_ERROR("compile error log : %s",errLog);
+			std::string str = (type == GL_FRAGMENT_SHADER ? "Fragment shader" : " Vertex shader");
+			LOG_ERROR("compile %s error log : \n%s",str.c_str(),errLog);
 		}
 		return (GL_TRUE ==  status);
 	}

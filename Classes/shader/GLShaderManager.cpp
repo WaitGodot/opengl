@@ -29,7 +29,7 @@ namespace glShaderSpace
 		if (!sg_ShaderManager)
 		{
 			sg_ShaderManager = new GLShaderManager();
-			sg_ShaderManager->init();
+			//sg_ShaderManager->init();
 		}
 		return sg_ShaderManager;
 	}

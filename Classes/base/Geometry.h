@@ -1,17 +1,17 @@
 #ifndef _GEOMETRY_H
 #define _GEOMETRY_H
 
-
+class Color;
 namespace cxGeomety{
 
 
 	class Point
 	{
 	public:
-		float x,y;
+		float x,y,z;
 
 		Point();
-		Point(float x, float y);
+		Point(float x, float y,float z);
 		~Point();
 
 		bool operator==(const Point& pt);
@@ -19,10 +19,12 @@ namespace cxGeomety{
 		Point operator-(const Point& pt);
 		Point operator*(const float& scale);
 		Point operator/(const float& scale);
+
+		void render();
 	};
 
-#define MakePoint(x,y) Point((x),(y))
-	static void gs_renderPoint(const Point& pt);
+#define Point2f(x,y) Point((x),(y),(0))
+#define Point3f(x,y,z) Point((x),(y),(z))
 
 	class Size
 	{
@@ -84,6 +86,9 @@ namespace cxGeomety{
 
 #define MakeRect(origin,size) Rect(origin,size)
 	static void gs_renderRect(const Rect& rt);
+
+
+	void drawColor(Color& color);
 
 }
 

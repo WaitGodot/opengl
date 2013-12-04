@@ -1,16 +1,30 @@
 #include "Geometry.h"
+#include "shader/GLShaderProgram.h"
+#include "shader/GLShaderManager.h"
+#include "_MacroConfig.h"
+#include "Color.h"
+
+using namespace glShaderSpace;
 
 namespace cxGeomety {
 
 
-	Point::Point()
+	static Color sg_color = color3f(1.0f,1.0f,1.0f) ;
+
+	void drawColor( Color& color )
 	{
-		this->x = this->y = 0;
+		sg_color = color;
 	}
 
-	Point::Point( float x, float y )
+
+	Point::Point()
 	{
-		this->x = x;this->y = y;
+		this->x = this->y = this->z = 0;
+	}
+
+	Point::Point( float x, float y ,float z)
+	{
+		this->x = x;this->y = y; this->z = z;
 	}
 
 	Point::~Point()
@@ -20,28 +34,46 @@ namespace cxGeomety {
 
 	bool Point::operator==( const Point& pt )
 	{
-		return (x == pt.x) && (y == pt.y );
+		return (x == pt.x) && (y == pt.y ) && ( z == pt.z );
 	}
 
 	Point Point::operator+( const Point& pt )
 	{
-		return MakePoint( pt.x + x , pt.y + y);
+		return Point3f( pt.x + x , pt.y + y , pt.z + z);
 	}
 
 	Point Point::operator-( const Point& pt )
 	{
-		return MakePoint(x - pt.x ,y - pt.y);
+		return Point3f(x - pt.x ,y - pt.y , z - pt.z);
 	}
 
 	Point Point::operator*( const float& scale )
 	{
-		return MakePoint( x * scale , y * scale);
+		return Point3f( x * scale , y * scale , z * scale);
 	}
 
 	Point Point::operator/( const float& scale )
 	{
-		return MakePoint( x / scale , y / scale);
+		return Point3f( x / scale , y / scale , z / scale);
 	}
+
+	void Point::render()
+	{
+		GLShaderProgram* progam = shareGLShaderManager()->getByKey(_Postion_Key);
+		progam->use();
+	
+		GLint l_position = progam->getVertexAttLoction(_Vertex_Position);
+		GLint l_color = progam->getVertexAttLoction(_Vertex_Color);
+
+		glEnable(GL_PROGRAM_POINT_SIZE);
+		glEnableVertexAttribArray( l_position );
+		glVertexAttribPointer(l_position,3,GL_FLOAT,GL_FALSE,0,this);
+		glEnableVertexAttribArray( l_color );
+		glVertexAttribPointer(l_color,4,GL_UNSIGNED_BYTE,GL_FALSE,0,&sg_color);
+		glDrawArrays(GL_POINTS,0,1);
+	}
+
+
 
 	Size::Size()
 	{
@@ -84,15 +116,11 @@ namespace cxGeomety {
 	}
 
 
-	void gs_renderPoint( const Point& pt )
-	{
-
-	}
 
 
 	Line::Line()
 	{
-		origin = destination = MakePoint(0,0);
+		origin = destination = Point2f(0,0);
 	}
 
 	Line::Line( const Point& origin , const Point& destination )
@@ -114,7 +142,7 @@ namespace cxGeomety {
 
 	Triangle::Triangle()
 	{
-		vertex1 = vertex2 = vertex3 = MakePoint(0,0);
+		vertex1 = vertex2 = vertex3 = Point2f(0,0);
 	}
 
 	Triangle::Triangle( const Point& pt1,const Point& pt2,const Point& pt3 )
@@ -161,5 +189,6 @@ namespace cxGeomety {
 	{
 
 	}
+
 
 }
