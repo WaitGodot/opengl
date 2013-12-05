@@ -70,15 +70,35 @@ void dumpInfo(void)
 }
 
 
+
+void geometryTest()
+{
+	drawColor(0.5f,0.0f,0.0f,1.0f);
+	Point2f(0.2,0.3).render();	
+	drawColor(1.0f,1.0f,0.0f,1.0f);
+	Point2f(0.5,0.1).render();
+	drawColor(0.5f,0.5f,0.5f,1.0f);
+	sg_renderLine(MakeLine(Point2f(-1,0),Point2f(1,0)));
+	sg_renderLine(MakeLine(Point2f(0,-1),Point2f(0,1)));
+
+	drawColor(0.0f,0.0f,0.0f,1.0f);
+	sg_randerStripLine(5,Point2f(-1,0),Point2f(0,1),Point2f(1,0),Point2f(0,-1),Point2f(-1,0));
+	drawColor(0.5f,0.5f,0.2f,1.0f);
+	sg_randerLoopLine(6,Point2f(-1,0),Point2f(-sin(30*PI/180),sin(60*PI/180)),
+		Point2f(sin(30*PI/180),sin(60*PI/180)),Point2f(1,0),
+		Point2f(sin(30*PI/180),-sin(60*PI/180)),Point2f(-sin(30*PI/180),-sin(60*PI/180)));
+
+	sg_renderTriangle(MakeTriangle(Point2f(0,0),Point2f(1,0),Point2f(sin(30*PI/180),sin(60*PI/180))));
+}
+
 void display()
 {
 	glClearColor(0,0.4,0.6,1);
 	glClear(GL_COLOR_BUFFER_BIT);  
 	
-	drawColor(color3f(1.0f,0.0f,0.0f));
-	Point2f(0,0).render();	
-	drawColor(color3f(1.0f,1.0f,0.0f));
-	Point2f(0,0.1).render();
+	geometryTest();
+
+
 // 
 // 	GLShaderProgram* progam = shareGLShaderManager()->getByKey(_Postion_Key);
 // 	progam->use();
@@ -101,6 +121,11 @@ void display()
 	glFlush();
 	glutSwapBuffers();
 	CHECK_GL_ERROR();
+}
+
+void reshape (int w, int h)
+{
+	glViewport (0, 0, (GLsizei) w, (GLsizei) h);
 }
 
 int main(int argc,char** argv)
@@ -142,6 +167,7 @@ int main(int argc,char** argv)
 	glShaderTest();
 
 	glutDisplayFunc(display);
+	glutReshapeFunc(reshape);
 	glutMainLoop();
 
 	system("pause");

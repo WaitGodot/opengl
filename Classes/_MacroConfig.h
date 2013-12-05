@@ -54,6 +54,8 @@
 #define DELETE_ARRAY_FAFE(p) if(p){delete [] p ; p = 0;}
 #endif
 
-
+#ifndef PI
+#define PI (3.14159265358979323846)
+#define PER_DEGREE (PI/180.0)
 
 #endif

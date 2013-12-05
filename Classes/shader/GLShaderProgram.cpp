@@ -11,7 +11,7 @@ namespace glShaderSpace {
 	{
 		for(int i = _Vertex_Start ; i < _Vertex_End ; i ++)
 		{
-			m_glLoction[i] = -1;
+			m_glAttributeLoction[i] = -1;
 		}
 	}
 
@@ -54,10 +54,12 @@ namespace glShaderSpace {
 			glAttachShader(m_programIdentity,fragId);
 			BREAK_IF(!link());
 
-			m_glLoction[_Vertex_Position] = glGetAttribLocation(m_programIdentity,AttributePosition);
-			m_glLoction[_Vertex_Color]    = glGetAttribLocation(m_programIdentity,AttributeColor);
-			m_glLoction[_Vertex_texCoords]= glGetAttribLocation(m_programIdentity,AttributeTexCoords);
-
+			m_glAttributeLoction[_Vertex_Position] = glGetAttribLocation(m_programIdentity,AttributePosition);
+			m_glAttributeLoction[_Vertex_Color]    = glGetAttribLocation(m_programIdentity,AttributeColor);
+			m_glAttributeLoction[_Vertex_texCoords]= glGetAttribLocation(m_programIdentity,AttributeTexCoords);
+			
+			m_glUniformLoction[U_COLOR] = glGetUniformLocation(m_programIdentity,Uniform_U_COLOR);
+			m_glUniformLoction[U_POINTSIZE] = glGetUniformLocation(m_programIdentity,Uniform_U_POINTSIZE);
 			result = true;
 		} while (0);
 
@@ -111,21 +113,18 @@ namespace glShaderSpace {
 		return (GL_TRUE == status);
 	}
 
-	GLint GLShaderProgram::getAttribLocation( const char* attribName )
-	{
-		return glGetAttribLocation(m_programIdentity,(const GLchar*)(attribName));
-	}
-
-	GLint GLShaderProgram::getUniformLocation( const char* uniformName )
-	{
-		return glGetUniformLocation(m_programIdentity,(const GLchar*)(uniformName));
-	}
-
 	GLint GLShaderProgram::getVertexAttLoction( VertexAttLoction attribute )
 	{
-		_ASSERT( attribute >= 0 && attribute <= _Vertxt_Count,"getVertexAttLoction error!");
-		return m_glLoction[attribute];
+		_ASSERT( attribute >= 0 && attribute <= _Vertxt_Count,"getVertexAttLoction index error!");
+		return m_glAttributeLoction[attribute];
 	}
+
+	GLint GLShaderProgram::getVertexUniformLoction( VertexUniformLoction uniform )
+	{
+		_ASSERT( uniform >= 0 && uniform <= U_MAX,"getVertexUniformLoction index error!");
+		return m_glUniformLoction[uniform];
+	}
+
 
 	void GLShaderProgram::use()
 	{
@@ -151,6 +150,12 @@ namespace glShaderSpace {
 		}
 		return program;
 	}
+
+	GLint GLShaderProgram::getProgram() const
+	{
+		return m_programIdentity;
+	}
+
 
 
 

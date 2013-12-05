@@ -55,7 +55,9 @@ namespace cxGeomety{
 		~Line();
 	};
 #define MakeLine(origin , destination) Line( (origin) , (destination))
-	static void gs_renderLine(const Line& rl);
+	void sg_renderLine(const Line& rl);
+	void sg_randerStripLine(int number,...);//
+	void sg_randerLoopLine(int number,...);//
 
 
 	class Triangle
@@ -68,7 +70,7 @@ namespace cxGeomety{
 		~Triangle();
 	};
 #define MakeTriangle(p1,p2,p3) Triangle(p1,p2,p3)
-	static void gs_renderTriangle(const Triangle& triangle);
+	void sg_renderTriangle(const Triangle& triangle);
 
 	class Rect
 	{
@@ -88,7 +90,7 @@ namespace cxGeomety{
 	static void gs_renderRect(const Rect& rt);
 
 
-	void drawColor(Color& color);
+	void drawColor(float r,float g,float b,float a);
 
 }
 

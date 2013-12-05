@@ -4,16 +4,20 @@
 #include "_MacroConfig.h"
 #include "Color.h"
 
+#include <stdarg.h>
+#include <iostream>
 using namespace glShaderSpace;
 
 namespace cxGeomety {
 
 
-	static Color sg_color = color3f(1.0f,1.0f,1.0f) ;
+	static float sg_color[4] = {1.0f,1.0f,1.0f,1.0f} ;
+	static float sg_pointSize = 1.0f;
 
-	void drawColor( Color& color )
+
+	void drawColor( float r,float g,float b,float a )
 	{
-		sg_color = color;
+		sg_color[0] = r;sg_color[1] = g;sg_color[2] = b;sg_color[3] = a;
 	}
 
 
@@ -63,13 +67,16 @@ namespace cxGeomety {
 		progam->use();
 	
 		GLint l_position = progam->getVertexAttLoction(_Vertex_Position);
-		GLint l_color = progam->getVertexAttLoction(_Vertex_Color);
-
+		GLint l_color = progam->getVertexUniformLoction(U_COLOR);
+		GLint l_pointsize = progam->getVertexUniformLoction(U_POINTSIZE);
 		glEnable(GL_PROGRAM_POINT_SIZE);
+		sg_pointSize = 5;
+		glUniform1f(l_pointsize,sg_pointSize);
+		glUniform4fv(l_color,1,sg_color);
+
+		//GLfloat vectex[3] = {10.0f,10.0f,0/500.0f};
 		glEnableVertexAttribArray( l_position );
 		glVertexAttribPointer(l_position,3,GL_FLOAT,GL_FALSE,0,this);
-		glEnableVertexAttribArray( l_color );
-		glVertexAttribPointer(l_color,4,GL_UNSIGNED_BYTE,GL_FALSE,0,&sg_color);
 		glDrawArrays(GL_POINTS,0,1);
 	}
 
@@ -134,10 +141,70 @@ namespace cxGeomety {
 	}
 
 
-	void gs_renderLine( const Line& rl )
+	void sg_renderLine( const Line& rl )
 	{
+		GLShaderProgram* pShader = shareGLShaderManager()->getByKey(_Postion_Key);
+		pShader->use();
+
+		GLint l_postion = pShader->getVertexAttLoction(_Vertex_Position);
+		GLint l_u_color = pShader->getVertexUniformLoction(U_COLOR);
+		glUniform4fv(l_u_color,1,sg_color);
+		glEnableVertexAttribArray(l_postion);
+		glVertexAttribPointer(l_postion ,3,GL_FLOAT,GL_FALSE,0,&rl);
+	
+		glDrawArrays(GL_LINES,0,2);
+		CHECK_GL_ERROR();
 
 	}
+
+	void sg_randerStripLine( int number,... )
+	{
+		va_list args;
+		va_start(args,number);
+		Point* arr = new Point[number];
+		for(int i = 0 ; i < number ; i++) 
+		{
+			 arr[i]= va_arg(args, Point);
+		}
+		va_end(args);
+
+		GLShaderProgram* pShader = shareGLShaderManager()->getByKey(_Postion_Key);
+		pShader->use();
+
+		GLint l_postion = pShader->getVertexAttLoction(_Vertex_Position);
+		GLint l_u_color = pShader->getVertexUniformLoction(U_COLOR);
+		glUniform4fv(l_u_color,1,sg_color);
+		glEnableVertexAttribArray(l_postion);
+		glVertexAttribPointer(l_postion ,3,GL_FLOAT,GL_FALSE,0,arr);
+
+		glDrawArrays(GL_LINE_STRIP,0,number);
+		CHECK_GL_ERROR();
+	}
+
+	void sg_randerLoopLine( int number,... )
+	{
+		va_list args;
+		va_start(args,number);
+		Point* arr = new Point[number];
+		for(int i = 0 ; i < number ; i++) 
+		{
+			arr[i]= va_arg(args, Point);
+		}
+		va_end(args);
+
+		GLShaderProgram* pShader = shareGLShaderManager()->getByKey(_Postion_Key);
+		pShader->use();
+
+		GLint l_postion = pShader->getVertexAttLoction(_Vertex_Position);
+		GLint l_u_color = pShader->getVertexUniformLoction(U_COLOR);
+		glUniform4fv(l_u_color,1,sg_color);
+		glEnableVertexAttribArray(l_postion);
+		glVertexAttribPointer(l_postion ,3,GL_FLOAT,GL_TRUE,0,arr);
+
+		glDrawArrays(GL_LINE_LOOP,0,number);
+		CHECK_GL_ERROR();
+	}
+
 
 
 	Triangle::Triangle()
@@ -155,13 +222,26 @@ namespace cxGeomety {
 
 	}
 
-	void gs_renderTriangle( const Triangle& triangle )
+	void sg_renderTriangle( const Triangle& triangle )
 	{
+		GLShaderProgram* pShader = shareGLShaderManager()->getByKey(_Postion_Key);
+		pShader->use();
 
+		GLint l_postion = pShader->getVertexAttLoction(_Vertex_Position);
+		GLint l_u_color = pShader->getVertexUniformLoction(U_COLOR);
+		glUniform4fv(l_u_color,1,sg_color);
+		glEnableVertexAttribArray(l_postion);
+		
+		GLfloat vectex[9] = {
+			0.0f,0.0f,0.0f,
+			0.0f,1.0f,0.0f,
+			sin(PER_DEGREE*30),sin(PER_DEGREE*60),0.0f
+		};
+		glVertexAttribPointer(l_postion ,3,GL_FLOAT,GL_TRUE,0,&triangle);
+
+		glDrawArrays(GL_TRIANGLES,0,3);
+		CHECK_GL_ERROR();
 	}
-
-
-
 
 
 	Rect::Rect()
@@ -189,6 +269,8 @@ namespace cxGeomety {
 	{
 
 	}
+
+
 
 
 }

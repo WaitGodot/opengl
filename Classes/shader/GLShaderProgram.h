@@ -23,10 +23,22 @@ namespace glShaderSpace{
 	};
 
 
+#define Uniform_U_COLOR "u_color"
+#define Uniform_U_POINTSIZE "u_pointSize"
+
+	enum VertexUniformLoction{
+		U_COLOR,
+		U_POINTSIZE,
+
+		U_MAX,
+	};
+
+
 	class GLShaderProgram 
 	{
 		GLuint m_programIdentity;
-		GLint m_glLoction[_Vertxt_Count];
+		GLint m_glAttributeLoction[_Vertxt_Count];
+		GLint m_glUniformLoction[U_MAX];
 
 	public:
 		GLShaderProgram();
@@ -37,10 +49,11 @@ namespace glShaderSpace{
 
 		bool initWithVertexShaderByFile(const char* vertexFile,const char* fragmentFile);
 		bool initWithVertexShaderByteArray(const GLchar* verterArray ,const GLchar* fragArray);
-		GLint getAttribLocation(const char* attribName);
-		GLint getUniformLocation(const char* uniformName);
-		GLint getVertexAttLoction(VertexAttLoction attribute);
 
+		GLint getVertexAttLoction(VertexAttLoction attribute);
+		GLint getVertexUniformLoction(VertexUniformLoction uniform);
+
+		GLint getProgram()const;
 		void use();
 	private:
 		bool compile(GLint& shaderId,GLenum type , const GLchar* array);
