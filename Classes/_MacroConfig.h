@@ -57,5 +57,16 @@
 #ifndef PI
 #define PI (3.14159265358979323846)
 #define PER_DEGREE (PI/180.0)
+#endif
+
+#define PVCLASSDATA
+#ifndef PVCLASSDATA
+#define PVCLASSDATA(c)  ((unsigned char*)(c) + 4 )
+#endif
+
+#define VCLASSDATA
+#ifndef VCLASSDATA
+#define VCLASSDATA(c)  ((unsigned char*)(&c) + 4 )
+#endif
 
 #endif

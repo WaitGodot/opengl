@@ -13,6 +13,59 @@ using namespace std;
 #include "base/Color.h"
 using namespace cxGeomety;
 
+
+//∂‡÷ÿºÃ≥–
+class C 
+{
+public:
+	int c;
+	virtual void vir_c()
+	{
+
+	}
+};
+
+class A :public virtual C
+{
+public:
+	int a;
+	virtual void vir_a()
+	{
+
+	}
+};
+
+class B : public virtual C
+{
+public:
+	int b;
+	virtual void vir_b()
+	{
+
+	}
+};
+
+class D :virtual public A,  public B
+{
+public:
+	int d;
+	virtual void vir_b()
+	{
+
+	}
+};
+
+void virMutilTest()
+{
+	A a1;B b1;C c1;D d1;
+	d1.a = 1;d1.b = 2;d1.A::c = 3;d1.B::c = 4;d1.d =5;
+	int szie_A = sizeof(a1);
+	int szie_B = sizeof(b1);
+	int szie_C = sizeof(c1);
+	int szie_D = sizeof(d1);
+
+}
+
 void pointTest()
 {
 	Point pt;
@@ -78,8 +131,8 @@ void geometryTest()
 	drawColor(1.0f,1.0f,0.0f,1.0f);
 	Point2f(0.5,0.1).render();
 	drawColor(0.5f,0.5f,0.5f,1.0f);
-	sg_renderLine(MakeLine(Point2f(-1,0),Point2f(1,0)));
-	sg_renderLine(MakeLine(Point2f(0,-1),Point2f(0,1)));
+	sg_renderLine(line2P(Point2f(-1,0),Point2f(1,0)));
+	sg_renderLine(line2P(Point2f(0,-1),Point2f(0,1)));
 
 	drawColor(0.0f,0.0f,0.0f,1.0f);
 	sg_randerStripLine(5,Point2f(-1,0),Point2f(0,1),Point2f(1,0),Point2f(0,-1),Point2f(-1,0));
@@ -88,7 +141,16 @@ void geometryTest()
 		Point2f(sin(30*PI/180),sin(60*PI/180)),Point2f(1,0),
 		Point2f(sin(30*PI/180),-sin(60*PI/180)),Point2f(-sin(30*PI/180),-sin(60*PI/180)));
 
-	sg_renderTriangle(MakeTriangle(Point2f(0,0),Point2f(1,0),Point2f(sin(30*PI/180),sin(60*PI/180))));
+	sg_renderTriangle(triangle3P(Point2f(0,0),Point2f(1,0),Point2f(sin(30*PI/180),sin(60*PI/180))));
+	drawColor(1,1,0,1);
+	sg_randerTrianglStrip(5,Point2f(0,0),Point2f(0,-0.2),Point2f(-0.2,0),Point2f(-0.2,-0.2),Point2f(-0.4,0));
+	drawColor(1,0,1,1);
+	sg_randerTrianglFan(6,Point2f(0,0),Point2f(0.5,0),Point2f(sin(45*PER_DEGREE)*0.5,sin(45*PER_DEGREE)*0.5),
+		Point2f(0,0.5),Point2f(-sin(45*PER_DEGREE)*0.5,sin(45*PER_DEGREE)*0.5),Point2f(-0.5,0) );
+
+	sg_renderRect(rect2P( Point2f(0.2,-0.2),Point2f(-0.4,-0.4)));
+	drawColor(0,1,1,1);
+	sg_renderRect(rect2P( Point2f(0.25,-0.2),Point2f(0.4,-0.4)) ,true);
 }
 
 void display()
@@ -141,14 +203,6 @@ int main(int argc,char** argv)
 	glutInitWindowSize (500, 500); 
 	glutInitWindowPosition (100, 100);
 	glutCreateWindow (argv[0]);
-
-// 	glutInitWindowSize(300,300);
-// 	glutInitWindowPosition(300,300);
-// 	glutInit(&argc,argv);
-// 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
-// 	glutInitContextVersion (3, 1);
-//	glutInitContextFlags (GLUT_FORWARD_COMPATIBLE | GLUT_DEBUG);
-// 	glutCreateWindow("Main");
 	dumpInfo();
 	
 	GLint GlewInitResult = glewInit();
@@ -165,6 +219,7 @@ int main(int argc,char** argv)
 	macroTest();
 	fielTest();
 	glShaderTest();
+	virMutilTest();
 
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);

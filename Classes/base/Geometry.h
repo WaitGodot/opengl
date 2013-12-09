@@ -21,6 +21,10 @@ namespace cxGeomety{
 		Point operator/(const float& scale);
 
 		void render();
+
+// 		virtual void point_virtual(){
+// 
+// 		}
 	};
 
 #define Point2f(x,y) Point((x),(y),(0))
@@ -43,7 +47,7 @@ namespace cxGeomety{
 
 	};
 
-#define MakeSize(w,h) Size(w,h)
+#define size2f(w,h) Size(w,h)
 
 	class Line
 	{
@@ -54,10 +58,12 @@ namespace cxGeomety{
 		Line(const Point& origin , const Point& destination);
 		~Line();
 	};
-#define MakeLine(origin , destination) Line( (origin) , (destination))
+#define line2P(origin , destination) Line( (origin) , (destination))
 	void sg_renderLine(const Line& rl);
 	void sg_randerStripLine(int number,...);//
 	void sg_randerLoopLine(int number,...);//
+	void sg_randerStripLine(int number,Point* arr);//
+	void sg_randerLoopLine(int number,Point* arr);//
 
 
 	class Triangle
@@ -69,25 +75,29 @@ namespace cxGeomety{
 		Triangle(const Point& pt1,const Point& pt2,const Point& pt3);
 		~Triangle();
 	};
-#define MakeTriangle(p1,p2,p3) Triangle(p1,p2,p3)
+#define triangle3P(p1,p2,p3) Triangle(p1,p2,p3)
 	void sg_renderTriangle(const Triangle& triangle);
+	void sg_randerTrianglStrip(int number,...);
+	void sg_randerTrianglStrip(int number,Point* arr);
+	void sg_randerTrianglFan(int number,...);
+	void sg_randerTrianglFan(int number,Point* arr);
 
 	class Rect
 	{
 	public:
 		Point origin;
-		Size  size;
+		Point  destination;
 
 		Rect();
-		Rect(const Point& pt , const Size& sz);
+		Rect(const Point& pt , const Point& dt);
 		~Rect();
 
 		bool intersertRect(const Rect& rt);
 
 	};
 
-#define MakeRect(origin,size) Rect(origin,size)
-	static void gs_renderRect(const Rect& rt);
+#define rect2P(origin,dt) Rect(origin,dt)
+	void sg_renderRect(const Rect& rt , bool isFill = false);
 
 
 	void drawColor(float r,float g,float b,float a);
