@@ -98,10 +98,12 @@ namespace cxGeomety{
 
 #define rect2P(origin,dt) Rect(origin,dt)
 	void sg_renderRect(const Rect& rt , bool isFill = false);
-
+	void sg_randerRect(Point* vertex, bool isFill = false);
+	void sg_randerRect(Point* vertex, int numbOfPoint,bool isFill = false);
 
 	void drawColor(float r,float g,float b,float a);
 
+	void drawCube(float s);
 }
 
 #endif

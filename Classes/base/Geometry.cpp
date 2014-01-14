@@ -3,10 +3,13 @@
 #include "shader/GLShaderManager.h"
 #include "_MacroConfig.h"
 #include "Color.h"
+#include "matrix/matrix4.h"
+#include "matrix/MatrixPool.h"
 
 #include <stdarg.h>
 #include <iostream>
 using namespace glShaderSpace;
+using namespace cxMatrix;
 
 namespace cxGeomety {
 
@@ -69,14 +72,24 @@ namespace cxGeomety {
 		GLint l_position = progam->getVertexAttLoction(_Vertex_Position);
 		GLint l_color = progam->getVertexUniformLoction(U_COLOR);
 		GLint l_pointsize = progam->getVertexUniformLoction(U_POINTSIZE);
+		GLint l_matrix = progam->getVertexUniformLoction(U_MODELVIEWMATRIX);
+
+		cxGLPushMatrix();
+			cxGLLoadentity();
+			cxGLTranslatef(0.5,0,0);
+			cxGLUniformMatrix4f(l_matrix);
+		cxGLPopMatrix();
 		glEnable(GL_PROGRAM_POINT_SIZE);
 		sg_pointSize = 5;
 		glUniform1f(l_pointsize,sg_pointSize);
 		glUniform4fv(l_color,1,sg_color);
+		//glUniformMatrix4fv(l_matrix,1,GL_FALSE,mat4->m_mat);
 
 		//GLfloat vectex[3] = {10.0f,10.0f,0/500.0f};
 		glEnableVertexAttribArray( l_position );
 		glVertexAttribPointer(l_position,3,GL_FLOAT,GL_FALSE,0,PVCLASSDATA(this));
+
+
 		glDrawArrays(GL_POINTS,0,1);
 	}
 
@@ -148,12 +161,24 @@ namespace cxGeomety {
 
 		GLint l_postion = pShader->getVertexAttLoction(_Vertex_Position);
 		GLint l_u_color = pShader->getVertexUniformLoction(U_COLOR);
-		glUniform4fv(l_u_color,1,sg_color);
-		glEnableVertexAttribArray(l_postion);
-		glVertexAttribPointer(l_postion ,3,GL_FLOAT,GL_FALSE,0,&rl);
+		//GLint l_matrix = pShader->getVertexUniformLoction(U_MODELVIEWMATRIX);
+		static float radius = 0;
+		radius += 0.01;
+		cxGLPushMatrix();
+			//cxGLLoadentity();
+			//cxGLTranslatef(0,0,-1);
+			//cxGLScalef(radius,radius,1);
+			//cxGLRotatef(radius,1,0,0);
+		
+			pShader->setMVPMatrix();
+
+			glUniform4fv(l_u_color,1,sg_color);
+			glEnableVertexAttribArray(l_postion);
+			glVertexAttribPointer(l_postion ,3,GL_FLOAT,GL_FALSE,0,&rl);
 	
-		glDrawArrays(GL_LINES,0,2);
-		CHECK_GL_ERROR();
+			glDrawArrays(GL_LINES,0,2);
+			CHECK_GL_ERROR();
+		cxGLPopMatrix();
 
 	}
 
@@ -338,16 +363,16 @@ namespace cxGeomety {
 	{
 		Point vectex[4] = {
 			rt.origin,
-			Point2f(rt.origin.x ,rt.destination.y),
+			Point3f(rt.origin.x ,rt.destination.y,rt.destination.z),
 			rt.destination,
-			Point2f(rt.destination.x,rt.origin.y ),
+			Point3f(rt.destination.x,rt.origin.y ,rt.origin.z),
 		};
 
-		
 		glPolygonMode(GL_FRONT, isFill ? GL_FILL : GL_LINE);
 		glFrontFace(GL_CW);//FORNT default : GL_CW,clock wise
 		GLShaderProgram* pShader = shareGLShaderManager()->getByKey(_Postion_Key);
 		pShader->use();
+		pShader->setMVPMatrix();
 
 		GLint l_postion = pShader->getVertexAttLoction(_Vertex_Position);
 		GLint l_u_color = pShader->getVertexUniformLoction(U_COLOR);
@@ -357,14 +382,131 @@ namespace cxGeomety {
 		glVertexAttribPointer(l_postion ,3,GL_FLOAT,GL_TRUE,0,vectex);
 
 		glDrawArrays(GL_POLYGON,0,4);
-
-// 		if(isFill){
-// 			sg_randerTrianglFan(4,vectex);
-// 		}else{
-// 			sg_randerLoopLine(4,vectex);
-// 		}
 	}
 
+	void sg_randerRect( Point* vertex, bool isFill /*= false*/ )
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, isFill ? GL_FILL : GL_LINE);
+		glFrontFace(GL_CW);//FORNT default : GL_CW,clock wise
+		GLShaderProgram* pShader = shareGLShaderManager()->getByKey(_Postion_Key);
+		pShader->use();
+		pShader->setMVPMatrix();
+
+		GLint l_postion = pShader->getVertexAttLoction(_Vertex_Position);
+		GLint l_u_color = pShader->getVertexUniformLoction(U_COLOR);
+		glUniform4fv(l_u_color,1,sg_color);
+		glEnableVertexAttribArray(l_postion);
+
+		glVertexAttribPointer(l_postion ,3,GL_FLOAT,GL_TRUE,0,vertex);
+
+		glDrawArrays(GL_POLYGON,0,4);
+	}
+
+	void sg_randerRect( Point* vertex, int numbOfPoint,bool isFill /*= false*/ )
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, isFill ? GL_FILL : GL_LINE);
+		glFrontFace(GL_CW);//FORNT default : GL_CW,clock wise
+		GLShaderProgram* pShader = shareGLShaderManager()->getByKey(_Postion_Key);
+		pShader->use();
+		pShader->setMVPMatrix();
+
+		GLint l_postion = pShader->getVertexAttLoction(_Vertex_Position);
+		GLint l_u_color = pShader->getVertexUniformLoction(U_COLOR);
+		glUniform4fv(l_u_color,1,sg_color);
+		glEnableVertexAttribArray(l_postion);
+
+		glVertexAttribPointer(l_postion ,3,GL_FLOAT,GL_TRUE,0,vertex);
+		for (int i = 0; i < numbOfPoint ; i +=4)
+		{
+			glDrawArrays(GL_POLYGON,i,4);
+		}
+		//glDrawArrays(GL_POLYGON,0,4);
+	}
+
+// 	void drawCube( float s )
+// 	{
+// 		float hs = s/2;
+// 		Point vertex[4];
+// 		//up
+// 		vertex[0] = Point3f(-hs,hs,hs);
+// 		vertex[1] = Point3f(-hs,hs,-hs);
+// 		vertex[2] = Point3f(hs,hs,-hs);
+// 		vertex[3] = Point3f(hs,hs,hs);
+// 		sg_randerRect(vertex);
+// 		//down
+// 		vertex[0] = Point3f(-hs,-hs,hs);
+// 		vertex[1] = Point3f(-hs,-hs,-hs);
+// 		vertex[2] = Point3f(hs,-hs,-hs);
+// 		vertex[3] = Point3f(hs,-hs,hs);
+// 		sg_randerRect(vertex);
+// 		//left
+// 		vertex[0] = Point3f(-hs,-hs,hs);
+// 		vertex[1] = Point3f(-hs,-hs,-hs);
+// 		vertex[2] = Point3f(-hs,hs,-hs);
+// 		vertex[3] = Point3f(-hs,hs,hs);
+// 		sg_randerRect(vertex);
+// 		//right
+// 		vertex[0] = Point3f(hs,-hs,hs);
+// 		vertex[1] = Point3f(hs,-hs,-hs);
+// 		vertex[2] = Point3f(hs,hs,-hs);
+// 		vertex[3] = Point3f(hs,hs,hs);
+// 		sg_randerRect(vertex);
+// 		//front
+// 		vertex[0] = Point3f(-hs,-hs,hs);
+// 		vertex[1] = Point3f(-hs,hs,hs);
+// 		vertex[2] = Point3f(hs,hs,hs);
+// 		vertex[3] = Point3f(hs,-hs,hs);
+// 		sg_randerRect(vertex);
+// 		//back
+// 		vertex[0] = Point3f(-hs,-hs,-hs);
+// 		vertex[1] = Point3f(-hs,hs,-hs);
+// 		vertex[2] = Point3f(hs,hs,-hs);
+// 		vertex[3] = Point3f(hs,-hs,-hs);
+// 		sg_randerRect(vertex);
+// 	}
+
+	void drawCube( float s )
+	{
+		float hs = s/2;
+		Point vertex[24];
+		//up
+		vertex[0] = Point3f(-hs,hs,hs);
+		vertex[1] = Point3f(-hs,hs,-hs);
+		vertex[2] = Point3f(hs,hs,-hs);
+		vertex[3] = Point3f(hs,hs,hs);
+		
+		//down
+		vertex[4] = Point3f(-hs,-hs,hs);
+		vertex[5] = Point3f(-hs,-hs,-hs);
+		vertex[6] = Point3f(hs,-hs,-hs);
+		vertex[7] = Point3f(hs,-hs,hs);
+		
+		//left
+		vertex[8] = Point3f(-hs,-hs,hs);
+		vertex[9] = Point3f(-hs,-hs,-hs);
+		vertex[10] = Point3f(-hs,hs,-hs);
+		vertex[11] = Point3f(-hs,hs,hs);
+		
+		//right
+		vertex[12] = Point3f(hs,-hs,hs);
+		vertex[13] = Point3f(hs,-hs,-hs);
+		vertex[14] = Point3f(hs,hs,-hs);
+		vertex[15] = Point3f(hs,hs,hs);
+		
+		//front
+		vertex[16] = Point3f(-hs,-hs,hs);
+		vertex[17] = Point3f(-hs,hs,hs);
+		vertex[18] = Point3f(hs,hs,hs);
+		vertex[19] = Point3f(hs,-hs,hs);
+		
+		//back
+		vertex[20] = Point3f(-hs,-hs,-hs);
+		vertex[21] = Point3f(-hs,hs,-hs);
+		vertex[22] = Point3f(hs,hs,-hs);
+		vertex[23] = Point3f(hs,-hs,-hs);
+		sg_randerRect(vertex,24);
+	}
+	
 
 
 

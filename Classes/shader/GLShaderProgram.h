@@ -25,10 +25,12 @@ namespace glShaderSpace{
 
 #define Uniform_U_COLOR "u_color"
 #define Uniform_U_POINTSIZE "u_pointSize"
+#define Uniform_U_MODELVIEWMATRIX "u_ModelViewMatrix"
 
 	enum VertexUniformLoction{
 		U_COLOR,
 		U_POINTSIZE,
+		U_MODELVIEWMATRIX,
 
 		U_MAX,
 	};
@@ -54,7 +56,9 @@ namespace glShaderSpace{
 		GLint getVertexUniformLoction(VertexUniformLoction uniform);
 
 		GLint getProgram()const;
+
 		void use();
+		void setMVPMatrix();
 	private:
 		bool compile(GLint& shaderId,GLenum type , const GLchar* array);
 		bool link();

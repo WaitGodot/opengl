@@ -2,6 +2,9 @@
 #include "_MacroConfig.h"
 #include "file/Fileutils.h"
 #include <gl/freeglut.h>
+#include "matrix/MatrixPool.h"
+
+using namespace cxMatrix;
 
 namespace glShaderSpace {
 
@@ -60,6 +63,7 @@ namespace glShaderSpace {
 			
 			m_glUniformLoction[U_COLOR] = glGetUniformLocation(m_programIdentity,Uniform_U_COLOR);
 			m_glUniformLoction[U_POINTSIZE] = glGetUniformLocation(m_programIdentity,Uniform_U_POINTSIZE);
+			m_glUniformLoction[U_MODELVIEWMATRIX] = glGetUniformLocation(m_programIdentity,Uniform_U_MODELVIEWMATRIX);
 			result = true;
 		} while (0);
 
@@ -154,6 +158,16 @@ namespace glShaderSpace {
 	GLint GLShaderProgram::getProgram() const
 	{
 		return m_programIdentity;
+	}
+
+	void GLShaderProgram::setMVPMatrix()
+	{
+		matrix4* mat_p = cxGLGetMatrixMode(CXGL_PROJECT);
+		matrix4* mat_md = cxGLGetMatrixMode(CXGL_VIEWMODE);
+
+		matrix4 out;
+		MMult(&out,mat_p,mat_md);
+		glUniformMatrix4fv(getVertexUniformLoction(U_MODELVIEWMATRIX),1,GL_FALSE,out.m_mat);
 	}
 
 

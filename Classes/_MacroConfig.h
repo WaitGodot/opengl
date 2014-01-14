@@ -57,6 +57,7 @@
 #ifndef PI
 #define PI (3.14159265358979323846)
 #define PER_DEGREE (PI/180.0)
+#define DEGREE(angle) (PER_DEGREE*(angle))
 #endif
 
 #define PVCLASSDATA

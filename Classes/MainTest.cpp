@@ -13,7 +13,9 @@ using namespace std;
 #include "base/Color.h"
 using namespace cxGeomety;
 
-
+#include "matrix/MatrixPool.h"
+#include "matrix/Vector3.h"
+using namespace cxMatrix;
 //¶àÖØ¼Ì³Ð
 class C 
 {
@@ -126,31 +128,52 @@ void dumpInfo(void)
 
 void geometryTest()
 {
-	drawColor(0.5f,0.0f,0.0f,1.0f);
-	Point2f(0.2,0.3).render();	
-	drawColor(1.0f,1.0f,0.0f,1.0f);
-	Point2f(0.5,0.1).render();
-	drawColor(0.5f,0.5f,0.5f,1.0f);
-	sg_renderLine(line2P(Point2f(-1,0),Point2f(1,0)));
-	sg_renderLine(line2P(Point2f(0,-1),Point2f(0,1)));
+// 	drawColor(0.5f,0.0f,0.0f,1.0f);
+// 	Point2f(0.2,0.3).render();	
+// 	drawColor(1.0f,1.0f,0.0f,1.0f);
+// 	Point2f(0.5,0.1).render();
+// 	drawColor(0.5f,0.5f,0.5f,1.0f);
 
-	drawColor(0.0f,0.0f,0.0f,1.0f);
-	sg_randerStripLine(5,Point2f(-1,0),Point2f(0,1),Point2f(1,0),Point2f(0,-1),Point2f(-1,0));
-	drawColor(0.5f,0.5f,0.2f,1.0f);
-	sg_randerLoopLine(6,Point2f(-1,0),Point2f(-sin(30*PI/180),sin(60*PI/180)),
-		Point2f(sin(30*PI/180),sin(60*PI/180)),Point2f(1,0),
-		Point2f(sin(30*PI/180),-sin(60*PI/180)),Point2f(-sin(30*PI/180),-sin(60*PI/180)));
+	sg_renderLine(line2P(Point2f(-4,0),Point2f(4,0)));
+	sg_renderLine(line2P(Point2f(0,-8),Point2f(0,8)));
+// 
+// 	drawColor(0.0f,0.0f,0.0f,1.0f);
+// 	sg_randerStripLine(5,Point2f(-1,0),Point2f(0,1),Point2f(1,0),Point2f(0,-1),Point2f(-1,0));
+// 	drawColor(0.5f,0.5f,0.2f,1.0f);
+// 	sg_randerLoopLine(6,Point2f(-1,0),Point2f(-sin(30*PI/180),sin(60*PI/180)),
+// 		Point2f(sin(30*PI/180),sin(60*PI/180)),Point2f(1,0),
+// 		Point2f(sin(30*PI/180),-sin(60*PI/180)),Point2f(-sin(30*PI/180),-sin(60*PI/180)));
+// 
+// 	sg_renderTriangle(triangle3P(Point2f(0,0),Point2f(1,0),Point2f(sin(30*PI/180),sin(60*PI/180))));
+// 	drawColor(1,1,0,1);
+// 	sg_randerTrianglStrip(5,Point2f(0,0),Point2f(0,-0.2),Point2f(-0.2,0),Point2f(-0.2,-0.2),Point2f(-0.4,0));
+// 	drawColor(1,0,1,1);
+// 	sg_randerTrianglFan(6,Point2f(0,0),Point2f(0.5,0),Point2f(sin(45*PER_DEGREE)*0.5,sin(45*PER_DEGREE)*0.5),
+// 		Point2f(0,0.5),Point2f(-sin(45*PER_DEGREE)*0.5,sin(45*PER_DEGREE)*0.5),Point2f(-0.5,0) );
+// 
+// 	sg_renderRect(rect2P( Point2f(0.2,-0.2),Point2f(-0.4,-0.4)));
+// 	drawColor(0,1,1,1);
+// 	sg_renderRect(rect2P( Point2f(0.25,-0.2),Point2f(0.4,-0.4)) ,true);
+}
 
-	sg_renderTriangle(triangle3P(Point2f(0,0),Point2f(1,0),Point2f(sin(30*PI/180),sin(60*PI/180))));
-	drawColor(1,1,0,1);
-	sg_randerTrianglStrip(5,Point2f(0,0),Point2f(0,-0.2),Point2f(-0.2,0),Point2f(-0.2,-0.2),Point2f(-0.4,0));
-	drawColor(1,0,1,1);
-	sg_randerTrianglFan(6,Point2f(0,0),Point2f(0.5,0),Point2f(sin(45*PER_DEGREE)*0.5,sin(45*PER_DEGREE)*0.5),
-		Point2f(0,0.5),Point2f(-sin(45*PER_DEGREE)*0.5,sin(45*PER_DEGREE)*0.5),Point2f(-0.5,0) );
+void vector3Test()
+{
+	Vector3 vec(0,0,2);
+	Vector3 vec1(0,1,0);
+	Vector3 pOut;
+	Vector3::CrossVector3(&pOut,&vec,&vec1);
+}
 
-	sg_renderRect(rect2P( Point2f(0.2,-0.2),Point2f(-0.4,-0.4)));
-	drawColor(0,1,1,1);
-	sg_renderRect(rect2P( Point2f(0.25,-0.2),Point2f(0.4,-0.4)) ,true);
+void cubeTest()
+{
+	static float s_d = 0;
+	cxGLPushMatrix();
+		cxGLTranslatef(1,0,0);
+ 		cxGLScalef(0.4,0.5,0.6);
+		cxGLRotatef(s_d,0,0,1);
+		drawCube(2);
+	cxGLPopMatrix();
+	s_d+=0.01;
 }
 
 void display()
@@ -158,27 +181,9 @@ void display()
 	glClearColor(0,0.4,0.6,1);
 	glClear(GL_COLOR_BUFFER_BIT);  
 	
+	//vector3Test();
 	geometryTest();
-
-
-// 
-// 	GLShaderProgram* progam = shareGLShaderManager()->getByKey(_Postion_Key);
-// 	progam->use();
-// 
-// 	GLint location = progam->getVertexAttLoction(_Vertex_Position);
-// 
-// 	GLfloat vertices[] = {
-// 		0.0f,  0.5f, 0.0f, 
-// 		-0.5f, -0.5f, 0.0f,
-// 		0.5f,  -0.5f, 0.0f };
-// 
-// 		glEnableVertexAttribArray(location);
-// 		CHECK_GL_ERROR();
-// 	glVertexAttribPointer(location, 3, GL_FLOAT, GL_FALSE, 0, vertices );
-// 	CHECK_GL_ERROR();
-// 	
-// 	glDrawArrays(GL_TRIANGLES, 0, 3);
-// 	CHECK_GL_ERROR();
+	cubeTest();
 
 	glFlush();
 	glutSwapBuffers();
@@ -188,6 +193,19 @@ void display()
 void reshape (int w, int h)
 {
 	glViewport (0, 0, (GLsizei) w, (GLsizei) h);
+	cxGLMatrixMode(CXGL_PROJECT);
+	cxGLLoadentity();
+	cxGLPerspectiveProjection(60,w/h,1,10);
+
+	cxGLMatrixMode(CXGL_VIEWMODE);
+	cxGLLoadentity();
+	cxGLLookAt(0,0,8,0,0,-1,0,1,0);
+}
+
+static void
+	idle(void)
+{
+	glutPostRedisplay();
 }
 
 int main(int argc,char** argv)
@@ -200,7 +218,7 @@ int main(int argc,char** argv)
 		glutInitContextVersion (3, 1);
 		glutInitContextFlags ( GLUT_DEBUG);
 	}
-	glutInitWindowSize (500, 500); 
+	glutInitWindowSize (800, 480); 
 	glutInitWindowPosition (100, 100);
 	glutCreateWindow (argv[0]);
 	dumpInfo();
@@ -215,6 +233,11 @@ int main(int argc,char** argv)
 	CHECK_GL_ERROR();
 	shareGLShaderManager()->init();
 
+	cxGLMatrixMode(CXGL_PROJECT);
+	cxGLLoadentity();
+
+	cxGLMatrixMode(CXGL_VIEWMODE);
+
 	pointTest();
 	macroTest();
 	fielTest();
@@ -223,6 +246,7 @@ int main(int argc,char** argv)
 
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
+	glutIdleFunc(idle);
 	glutMainLoop();
 
 	system("pause");
