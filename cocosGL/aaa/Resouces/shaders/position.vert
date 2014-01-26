@@ -7,13 +7,13 @@ attribute vec4 a_color;
 uniform vec4 u_color;
 uniform float u_pointSize;
 
-uniform mat4 u_ModelViewMatrix;
+uniform mat4 u_mvpMatrix;
 
-out vec4 v_varyingFragColor;
+out vec4 varyingFragColor;
 
 void main()
 {
 	gl_PointSize = u_pointSize;
-	gl_Position = u_ModelViewMatrix * a_position;
-	v_varyingFragColor = u_color;
+	gl_Position = u_mvpMatrix * a_position;
+	varyingFragColor = u_color;
 }

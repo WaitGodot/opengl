@@ -9,6 +9,8 @@
 
 using namespace cxMatrix;
 #include <string>
+#include <math.h>
+#include "MacroConfig.h"
 
 namespace glShaderSpace
 {
@@ -25,7 +27,9 @@ namespace glShaderSpace
 		Vector4 m_position;//3
 		Vector3 m_spot_dirction;//4
 		float   m_spot_exponent;//5
-		float   m_spot_cutoff;//6
+	private:
+		float   m_spot_cutoff;float m_spot_coscutoff;//6
+	public:
 		float   m_constant_attenuation;//7
 		float   m_linear_attenuation;//8
 		float   m_quadratic_attenuation;//9
@@ -46,6 +50,7 @@ namespace glShaderSpace
 			m_quadratic_attenuation(0),
 			m_light_name("")
 		{
+			m_spot_coscutoff = cosf(DEGREE(180));
 		}
 
 		~LightAttribute()
@@ -53,7 +58,8 @@ namespace glShaderSpace
 
 		}
 
-		void initWithLight(GLint programId,std::string& name);
+		void setSpotCutoff(float angle);
+		void initWithLight(GLint programId,const char* name);
 		void update();
 	};
 
@@ -71,7 +77,7 @@ namespace glShaderSpace
 
 		}
 
-		void initWithModel(GLint programId,std::string& name);
+		void initWithModel(GLint programId,const char* name);
 		void update();
 	};
 
@@ -97,7 +103,7 @@ namespace glShaderSpace
 
 		}
 
-		void initWithMaterial(GLint programId,std::string& name);
+		void initWithMaterial(GLint programId,const char* name);
 		void update();
 	};
 
@@ -111,11 +117,11 @@ namespace glShaderSpace
 		GLLight();
 		~GLLight();
 
-		LightAttribute& getLightAtt();
-		LightMaterialAttribute& getLightMatrialAtt();
-		LightModelAttribute& getLightModelAtt();
+		LightAttribute* getLightAtt();
+		LightMaterialAttribute* getLightMatrialAtt();
+		LightModelAttribute* getLightModelAtt();
 		//
-		void initLightModule(GLint programId,std::string& lightName,std::string& lightModelName,std::string& materialName );
+		void initLightModule(GLint programId,const char* lightName,const char* lightModelName,const char* materialName );
 		void updateLight();
 	};
 }

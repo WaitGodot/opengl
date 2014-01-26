@@ -1,4 +1,4 @@
-//position fragment shader
+
 #version 140
 
 out vec4 vFragColor;

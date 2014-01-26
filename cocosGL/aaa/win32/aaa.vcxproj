@@ -11,8 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2D7DAC9D-C493-4D70-8B9A-537991F5475F}</ProjectGuid>
-    <RootNamespace>ccc</RootNamespace>
+    <ProjectGuid>{0305CF28-A1D1-4A2C-BE49-4E42F679037D}</ProjectGuid>
+    <RootNamespace>OpenGL</RootNamespace>
+    <ProjectName>aaa</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -41,8 +42,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../Classes/GLTools/include;../Classes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../Classes;../Classes/GLTools/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -63,25 +64,43 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Classes\GLTools\include\GLBatch.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLBatchBase.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLFrame.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLFrustum.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLGeometryTransform.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLMatrixStack.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLShaderManager.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLTools.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLTriangleBatch.h" />
-    <ClInclude Include="..\Classes\GLTools\include\math3d.h" />
-    <ClInclude Include="..\Classes\GLTools\include\StopWatch.h" />
+    <ClCompile Include="..\Classes\base\Color.cpp" />
+    <ClCompile Include="..\Classes\base\Geometry.cpp" />
+    <ClCompile Include="..\Classes\base\timer.cpp" />
+    <ClCompile Include="..\Classes\file\FileUtils.cpp" />
+    <ClCompile Include="..\Classes\Main.cpp" />
+    <ClCompile Include="..\Classes\MainTest.cpp" />
+    <ClCompile Include="..\Classes\matrix\Matrix3x3.cpp" />
+    <ClCompile Include="..\Classes\matrix\Matrix4x4.cpp" />
+    <ClCompile Include="..\Classes\matrix\MatrixPool.cpp" />
+    <ClCompile Include="..\Classes\matrix\Vector3.cpp" />
+    <ClCompile Include="..\Classes\matrix\Vector4.cpp" />
+    <ClCompile Include="..\Classes\shader\GLLight.cpp" />
+    <ClCompile Include="..\Classes\shader\GLShaderMgr.cpp" />
+    <ClCompile Include="..\Classes\shader\GLShaderProgram.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Classes\GLTools\src\GLBatch.cpp" />
-    <ClCompile Include="..\Classes\GLTools\src\GLShaderManager.cpp" />
-    <ClCompile Include="..\Classes\GLTools\src\GLTools.cpp" />
-    <ClCompile Include="..\Classes\GLTools\src\GLTriangleBatch.cpp" />
-    <ClCompile Include="..\Classes\GLTools\src\math3d.cpp" />
-    <ClCompile Include="..\Classes\Main.cpp" />
+    <ClInclude Include="..\Classes\base\Color.h" />
+    <ClInclude Include="..\Classes\base\Geometry.h" />
+    <ClInclude Include="..\Classes\base\timer.h" />
+    <ClInclude Include="..\Classes\file\Fileutils.h" />
+    <ClInclude Include="..\Classes\MainTest.h" />
+    <ClInclude Include="..\Classes\matrix\Matrix3x3.h" />
+    <ClInclude Include="..\Classes\matrix\Matrix4x4.h" />
+    <ClInclude Include="..\Classes\matrix\MatrixPool.h" />
+    <ClInclude Include="..\Classes\matrix\Vector3.h" />
+    <ClInclude Include="..\Classes\matrix\Vector4.h" />
+    <ClInclude Include="..\Classes\shader\GLLight.h" />
+    <ClInclude Include="..\Classes\MacroConfig.h" />
+    <ClInclude Include="..\Classes\shader\GLShaderProgram.h" />
+    <ClInclude Include="..\Classes\shader\GLShaderMgr.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resouces\shaders\light.frag" />
+    <None Include="..\Resouces\shaders\light.vert" />
+    <None Include="..\Resouces\shaders\position.frag" />
+    <None Include="..\Resouces\shaders\position.vert" />
+    <None Include="..\Resouces\shaders\readme.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -38,7 +38,8 @@ void cubeTest();
 void lightInit();
 void lightTest();
 
-
-
+//////////////////////////////////////////////////////////////////////////
+// lightning
+void lightningTest();
 
 #endif

@@ -1,23 +1,11 @@
-#include "MainTest.h"
 
 #include <gl/glew.h>
 #include <gl/freeglut.h>
 #include <iostream>
-#include "MacroConfig.h"
-#include "file/Fileutils.h"
-#include "shader/GLShaderMgr.h"
-#include "shader/GLShaderProgram.h"
+#include "GLTools/include/GLTools.h"
 
-using namespace glShaderSpace;
 using namespace std;
 
-#include "base/Geometry.h"
-#include "base/Color.h"
-using namespace cxGeomety;
-
-#include "matrix/MatrixPool.h"
-#include "matrix/Vector3.h"
-using namespace cxMatrix;
 
 
 static GLfloat sg_rotateX = 0.0f;
@@ -35,55 +23,30 @@ static void dumpInfo(void)
 
 static void drawAxis()
 {
-	cxGLPushMatrix();
-	{
-		drawColor(1,0,0,1);
-		sg_renderLine(line2P(Point3f(-4,0,0),Point3f(4,0,0)));
-		drawColor(0,1,0,1);
-		sg_renderLine(line2P(Point3f(0,-4,0),Point3f(0,4,0)));
-		drawColor(0,0,1,1);
-		sg_renderLine(line2P(Point3f(0,0,-4),Point3f(0,0,4)));
-		drawColor(1,1,1,1);
-	}
 
-	cxGLPopMatrix();
 }
 
+GLBatch cube;
+
+static void testInit() 
+{
+	gltMakeCube(cube,1);
+}
 static void display()
 {
 	glClearColor(0,0.4,0.6,1);
 	glClear(GL_COLOR_BUFFER_BIT);  
 
-	cxGLMatrixMode(CXGL_VIEWMODE);
-
-	cxGLPushMatrix();
-	{
-		cxGLRotatef(sg_rotateX,1,0,0);
-		cxGLRotatef(sg_rotateY,0,1,0);
-		//drawAxis();
-		
-		//lightningTest();
-		cubeTest();
-		
-		//lightTest();
-	}
-	cxGLPopMatrix();
-
+	cube.Draw();
+	
 	glFlush();
 	glutSwapBuffers();
-	CHECK_GL_ERROR();
 }
 
 static void reshape (int w, int h)
 {
 	glViewport (0, 0, (GLsizei) w, (GLsizei) h);
-	cxGLMatrixMode(CXGL_PROJECT);
-	cxGLLoadentity();
-	cxGLPerspectiveProjection(60,w/h,1,10);
-
-	cxGLMatrixMode(CXGL_VIEWMODE);
-	cxGLLoadentity();
-	cxGLLookAt(0,0,8,0,0,-1,0,1,0);
+	
 }
 
 static void idle(void)
@@ -100,6 +63,8 @@ static void motionFunction(int x, int y)
 	sg_mouseX = x;
 	sg_mouseY = y;
 }
+
+
 
 static void mouseFunction(int button,int state,int x,int y)
 {
@@ -134,19 +99,10 @@ int main(int argc,char** argv)
 	GLint GlewInitResult = glewInit();
 	if (GLEW_OK != GlewInitResult) 
 	{
-		LOG_ERROR("ERROR: %s\n",glewGetErrorString(GlewInitResult));
 		exit(EXIT_FAILURE);
 	}
 
-	CHECK_GL_ERROR();
-	shareGLShaderManager()->init();
-	// 
-	// 	GLint maxVertexUniforms;
-	// 	glGetIntegerv(GL_MAX_VERTEX_UNIFORM_COMPONENTS, &maxVertexUniforms);
-	// 	glGetIntegerv(GL_MAX_GEOMETRY_UNIFORM_COMPONENTS, &maxVertexUniforms);
-	// 	glGetIntegerv(GL_MAX_FRAGMENT_UNIFORM_COMPONENTS, &maxVertexUniforms);
-
-	lightInit();
+	testInit();
 
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
@@ -156,13 +112,13 @@ int main(int argc,char** argv)
 
 	glEnable(GL_MULTISAMPLE);
 
- 	glEnable(GL_CULL_FACE);
- 	glCullFace(GL_BACK);
+	//glEnable(GL_CULL_FACE);
+	//glCullFace(GL_BACK);
 
 	//glEnable(GL_DEPTH_TEST);
 	//glDepthFunc(GL_LESS);
 
-	
+
 	glutMainLoop();
 
 	system("pause");

@@ -7,7 +7,9 @@ namespace glShaderSpace {
 
 	enum ShaderKey{
 		_Postion_Key,
-
+		_PointLight_Key,
+		_AdsLight_key,
+		_Lightning_key,
 	};
 
 

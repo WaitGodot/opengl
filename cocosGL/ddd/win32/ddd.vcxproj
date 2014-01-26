@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2D7DAC9D-C493-4D70-8B9A-537991F5475F}</ProjectGuid>
-    <RootNamespace>ccc</RootNamespace>
+    <ProjectGuid>{9880CE02-1BD1-4A01-AE39-83B5BDA13C62}</ProjectGuid>
+    <RootNamespace>ddd</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -41,12 +41,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../Classes/GLTools/include;../Classes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../Classes</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glew32.lib;freeglut_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -63,24 +61,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Classes\GLTools\include\GLBatch.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLBatchBase.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLFrame.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLFrustum.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLGeometryTransform.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLMatrixStack.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLShaderManager.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLTools.h" />
-    <ClInclude Include="..\Classes\GLTools\include\GLTriangleBatch.h" />
-    <ClInclude Include="..\Classes\GLTools\include\math3d.h" />
-    <ClInclude Include="..\Classes\GLTools\include\StopWatch.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\Classes\GLTools\src\GLBatch.cpp" />
-    <ClCompile Include="..\Classes\GLTools\src\GLShaderManager.cpp" />
-    <ClCompile Include="..\Classes\GLTools\src\GLTools.cpp" />
-    <ClCompile Include="..\Classes\GLTools\src\GLTriangleBatch.cpp" />
-    <ClCompile Include="..\Classes\GLTools\src\math3d.cpp" />
     <ClCompile Include="..\Classes\Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

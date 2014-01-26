@@ -65,5 +65,8 @@
     <ClCompile Include="..\Classes\GLTools\src\math3d.cpp">
       <Filter>Classes\GLTools\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Main.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

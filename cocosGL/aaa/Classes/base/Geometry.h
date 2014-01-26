@@ -27,6 +27,10 @@ namespace cxGeomety{
 // 		}
 	};
 
+	inline Point operator-(const Point& p1,const Point& p2){
+		return Point(p1.x - p2.x ,p1.y - p2.y , p1.z - p2.z);
+	}
+
 #define Point2f(x,y) Point((x),(y),(0))
 #define Point3f(x,y,z) Point((x),(y),(z))
 
