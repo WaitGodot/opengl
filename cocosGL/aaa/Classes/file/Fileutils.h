@@ -25,6 +25,7 @@ public:
 	unsigned char* getFileDataNotFullPath(const char* file,const char* mode, unsigned long& length);
 	void setRootPath(const char* path);
 
+	bool fileExist(const char* file);
 
 	static FileUtils* shareFileUtils();
 };

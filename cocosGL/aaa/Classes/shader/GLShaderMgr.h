@@ -10,6 +10,8 @@ namespace glShaderSpace {
 		_PointLight_Key,
 		_AdsLight_key,
 		_Lightning_key,
+		_Texture_key,
+
 	};
 
 

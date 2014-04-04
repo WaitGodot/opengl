@@ -1,7 +1,9 @@
 #include "Fileutils.h"
 #include "MacroConfig.h"
 #include <windows.h>
-
+#include <io.h>
+#include <string>
+using namespace std;
 
 #define MAX_PATH 256
 
@@ -18,7 +20,12 @@ FileUtils::~FileUtils()
 
 std::string FileUtils::getFullPath( const char* file )
 {
-	return m_rootPath + file;
+	string str = file;
+	if ( str.find(m_rootPath) == string::npos)
+	{
+		return m_rootPath + file;
+	}
+	return file;
 }
 
 const char* FileUtils::getFullPathNeedRelease( const char* file )
@@ -88,6 +95,11 @@ FileUtils* FileUtils::shareFileUtils()
 		gs_fileutils->checkPath();
 	}
 	return gs_fileutils;
+}
+
+bool FileUtils::fileExist( const char* file )
+{
+	return _access(getFullPath(file).c_str(),0) != -1 ? true : false ;
 }
 
 FileUtils* FileUtils::gs_fileutils = 0;

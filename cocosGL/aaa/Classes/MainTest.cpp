@@ -19,7 +19,11 @@ using namespace cxGeomety;
 #include "matrix/Vector3.h"
 using namespace cxMatrix;
 
-#include "base/timer.h"
+#include "timer/timer.h"
+#include "texture/Image.h"
+#include "texture/Sprite.h"
+#include "texture/Texture.h"
+
 //////////////////////////////////////////////////////////////////////////
 // virtual test model
 //¶àÖØ¼Ì³Ð
@@ -121,11 +125,11 @@ void fileTest()
 	unsigned char* data = gsShareFileUtils()->getFileData( gsShareFileUtils()->getFullPath("test.txt").c_str()
 		,"r",length);
 	data[8] = '\0';
-	DELETE_ARRAY_FAFE(data);
+	DELETE_ARRAY_SAFE(data);
 	const char* path = gsShareFileUtils()->getFullPathNeedRelease("test/test.txt");
 	data = gsShareFileUtils()->getFileData("test/test.txt","r",length);
-	DELETE_ARRAY_FAFE(data);
-	DELETE_ARRAY_FAFE(path);
+	DELETE_ARRAY_SAFE(data);
+	DELETE_ARRAY_SAFE(path);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -211,34 +215,76 @@ void lightTest()
 
 }
 
-timer sg_timer;
+//////////////////////////////////////////////////////////////////////////
+// lightning
+
+static timer sg_timer;
+static Point sg_start = Point2f(-2,0);
+static Point sg_end = Point2f(2,0);
+
+static int count = 10;
+static float cuoff = cosf(DEGREE(30));
+
+void renderOneLightning(Point curentpoint ,Point prepoint)
+{
+	float x = curentpoint.x + ( sg_end.x - sg_start.x)/count ;
+	if( curentpoint.x >= sg_end.x || x > sg_end.x)
+	{
+		return ;
+	}
+	float y = 1 * MATH_RANDOM_MINUS1_1();
+
+	Point nextPoint = Point2f(x,y);
+	Vector3 vec1( curentpoint.x - sg_start.x , curentpoint.y - sg_start.y ,curentpoint.z - prepoint.z);
+	Vector3 vec2( nextPoint.x - curentpoint.x , nextPoint.y - curentpoint.y ,nextPoint.z - curentpoint.z);
+	vec1.normalize();
+	vec2.normalize();
+
+	float cdt = vec1.dot(&vec2);
+	cdt = cdt > 0 ? cdt : 0;
+
+	if ( cdt > cuoff)
+	{
+		sg_renderLine(line2P(curentpoint,nextPoint) );
+		renderOneLightning(nextPoint,curentpoint);
+	}else
+	{
+		renderOneLightning(curentpoint,prepoint);
+	}
+	
+
+	
+}
+
+
+
 void lightningTest()
 {
-
-	Point2f(0,0).render();
-
 	cxGLPushMatrix();
 	{
-		GLShaderProgram* program = shareGLShaderManager()->getByKey(_Lightning_key);
-		program->use();
+		renderOneLightning(sg_start,Point2f(-3,0));
 
-		program->updateMVPMatrix();
-
-		GLint l_position = program->getVertexAttLoction(_Vertex_Position);
-		GLint l_resolution = glGetUniformLocation(program->getProgram(),"u_resolution");
-		GLint l_globalTime = glGetUniformLocation(program->getProgram(),"u_globalTime");
-
-		GLfloat vec3[] = {0,0,0};
-
-		glEnableVertexAttribArray( l_position );
-		glVertexAttribPointer(l_position,3,GL_FLOAT,GL_FALSE,0,vec3);
-
-// 
-// 		glUniform3f(l_resolution,1,1,1);
-// 		float dt = sg_timer.elapsed();
-// 		glUniform1f(l_globalTime,dt);
-
-		glDrawArrays(GL_POINTS,0,1);
 	}
 	cxGLPopMatrix();
 }
+
+//////////////////////////////////////////////////////////////////////////
+// texture
+void imageTest()
+{
+
+	Image* p = Image::create("test.png");
+}
+
+void spriteTest()
+{
+	CHECK_GL_ERROR();
+	static Image* p = Image::create("test.png");
+	static Texture* ptx = Texture::create(p);
+	static Sprite* pSp = Sprite::create(ptx);
+	pSp->draw();
+}
+
+//////////////////////////////////////////////////////////////////////////
+//ffmpeg : ffmpegTest.cpp
+//////////////////////////////////////////////////////////////////////////

@@ -31,6 +31,7 @@ namespace glShaderSpace{
 #define UniformMvMatrix "u_mvMatrix"
 #define UniformMvpMatrix "u_mvpMatrix"
 #define UniformNormal "u_Normal"
+#define UniformTexture "vTexture"
 
 	enum VertexUniformLoction{
 		U_COLOR,
@@ -38,6 +39,7 @@ namespace glShaderSpace{
 		U_MVMATRIX,
 		U_MVPMATRIX,
 		U_NORMAL,
+		U_TEXTURE,
 
 		U_MAX,
 	};
@@ -79,6 +81,9 @@ namespace glShaderSpace{
 	private:
 		bool compile(GLint& shaderId,GLenum type , const GLchar* array);
 		bool link();
+		void updateUniforms();
+
+		friend class GLShaderMgr;
 
 	};
 

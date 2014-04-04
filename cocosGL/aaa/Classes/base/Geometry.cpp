@@ -77,7 +77,7 @@ namespace cxGeomety {
 		
 		glEnable(GL_PROGRAM_POINT_SIZE);
 
-		glUniform1f(l_pointsize,sg_pointSize);
+		//glUniform1f(l_pointsize,sg_pointSize);
 		glUniform4fv(l_color,1,sg_color);
 		program->updateMVPMatrix();
 

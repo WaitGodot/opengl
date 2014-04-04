@@ -10,10 +10,17 @@
 #define _MACRO_SWITCH
 
 #if !defined(_MACRO_SWITCH) 
-#define LOG_ERROR()
+#define LOG_ERROR(format,...) 
 #else
 #define LOG_ERROR(format,...)	fprintf(stderr,format,##__VA_ARGS__);\
 	fprintf(stderr,"\n");
+#endif
+
+#if !defined(_MACRO_SWITCH) 
+#define LOG(format,...) 
+#else
+#define LOG(format,...)	fprintf(stdout,format,##__VA_ARGS__);\
+	fprintf(stdout,"\n");
 #endif
 
 #if !defined(_MACRO_SWITCH) 
@@ -50,8 +57,8 @@
 #define DELETE_SAFE(p) if(p){delete p ; p = 0;}
 #endif
 
-#ifndef DELETE_ARRAY_FAFE
-#define DELETE_ARRAY_FAFE(p) if(p){delete [] p ; p = 0;}
+#ifndef DELETE_ARRAY_SAFE
+#define DELETE_ARRAY_SAFE(p) if(p){delete [] p ; p = 0;}
 #endif
 
 #define MATH_FLOAT_SMALL            1.0e-37f
@@ -73,5 +80,8 @@
 #ifndef VCLASSDATA
 #define VCLASSDATA(c)  ((unsigned char*)(&c) + 4 )
 #endif
+
+#define MATH_RANDOM_MINUS1_1()      ((2.0f*((float)rand()/RAND_MAX))-1.0f)      // Returns a random float between -1 and 1.
+#define MATH_RANDOM_0_1()           ((float)rand()/RAND_MAX)                    // Returns a random float between 0 and 1.
 
 #endif

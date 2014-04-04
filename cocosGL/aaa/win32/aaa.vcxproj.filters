@@ -22,6 +22,15 @@
     <Filter Include="resources\shader">
       <UniqueIdentifier>{7f107326-554e-4087-9509-6b7bc19c15b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\texture">
+      <UniqueIdentifier>{3b3713db-993b-4d31-9beb-761b2bebeb6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\timer">
+      <UniqueIdentifier>{da21f347-c876-4fc9-bf82-44a2da132d53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\av">
+      <UniqueIdentifier>{daea905d-6923-41c5-9c03-d0a4d8df50a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\MainTest.cpp">
@@ -63,8 +72,29 @@
     <ClCompile Include="..\Classes\Main.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\base\timer.cpp">
-      <Filter>Classes\base</Filter>
+    <ClCompile Include="..\Classes\texture\Image.cpp">
+      <Filter>Classes\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\texture\Texture.cpp">
+      <Filter>Classes\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\texture\Sprite.cpp">
+      <Filter>Classes\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ffmpegTest.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\timer\timer.cpp">
+      <Filter>Classes\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\timer\schedule.cpp">
+      <Filter>Classes\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\av\AVVideoDecode.cpp">
+      <Filter>Classes\av</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\av\AVVideo.cpp">
+      <Filter>Classes\av</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,17 +137,32 @@
     <ClInclude Include="..\Classes\MainTest.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\base\timer.h">
-      <Filter>Classes\base</Filter>
+    <ClInclude Include="..\Classes\texture\Image.h">
+      <Filter>Classes\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\texture\Texture.h">
+      <Filter>Classes\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\texture\Sprite.h">
+      <Filter>Classes\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\timer\timer.h">
+      <Filter>Classes\timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\timer\schedule.h">
+      <Filter>Classes\timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\av\AVVideo.h">
+      <Filter>Classes\av</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\av\AVVideoDecode.h">
+      <Filter>Classes\av</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\av\AVVideoSampler.h">
+      <Filter>Classes\av</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Resouces\shaders\light.frag">
-      <Filter>resources\shader</Filter>
-    </None>
-    <None Include="..\Resouces\shaders\light.vert">
-      <Filter>resources\shader</Filter>
-    </None>
     <None Include="..\Resouces\shaders\position.frag">
       <Filter>resources\shader</Filter>
     </None>
@@ -125,6 +170,30 @@
       <Filter>resources\shader</Filter>
     </None>
     <None Include="..\Resouces\shaders\readme.txt">
+      <Filter>resources\shader</Filter>
+    </None>
+    <None Include="..\Resouces\shaders\ads_light.frag">
+      <Filter>resources\shader</Filter>
+    </None>
+    <None Include="..\Resouces\shaders\ads_light.vert">
+      <Filter>resources\shader</Filter>
+    </None>
+    <None Include="..\Resouces\shaders\lightning.frag">
+      <Filter>resources\shader</Filter>
+    </None>
+    <None Include="..\Resouces\shaders\lightning.vert">
+      <Filter>resources\shader</Filter>
+    </None>
+    <None Include="..\Resouces\shaders\point_light.frag">
+      <Filter>resources\shader</Filter>
+    </None>
+    <None Include="..\Resouces\shaders\point_light.vert">
+      <Filter>resources\shader</Filter>
+    </None>
+    <None Include="..\Resouces\shaders\sprite.frag">
+      <Filter>resources\shader</Filter>
+    </None>
+    <None Include="..\Resouces\shaders\sprite.vert">
       <Filter>resources\shader</Filter>
     </None>
   </ItemGroup>

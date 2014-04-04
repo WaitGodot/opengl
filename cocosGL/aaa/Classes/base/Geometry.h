@@ -21,10 +21,6 @@ namespace cxGeomety{
 		Point operator/(const float& scale);
 
 		void render();
-
-// 		virtual void point_virtual(){
-// 
-// 		}
 	};
 
 	inline Point operator-(const Point& p1,const Point& p2){

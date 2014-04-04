@@ -68,6 +68,12 @@ namespace glShaderSpace
 		{
 			addProgram(_Lightning_key,program);
 		}
+
+		program = GLShaderProgram::createByFile("shaders/sprite.vert","shaders/sprite.frag");
+		if (program)
+		{
+			addProgram(_Texture_key,program);
+		}
 	}
 
 

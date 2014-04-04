@@ -19,18 +19,30 @@ using namespace cxGeomety;
 #include "matrix/Vector3.h"
 using namespace cxMatrix;
 
+#include "timer/schedule.h"
+#include "av/AVVideo.h"
+#include "av/AVVideoSampler.h"
+
 
 static GLfloat sg_rotateX = 0.0f;
 static GLfloat sg_rotateY = 0.0f;
 static int sg_mouseX = 0;
 static int sg_mouseY = 0;
 
+
+AVVideo* sgVideo = NULL;
+
 static void dumpInfo(void)
 {
-	printf ("Vendor: %s\n", glGetString (GL_VENDOR));
-	printf ("Renderer: %s\n", glGetString (GL_RENDERER));
-	printf ("Version: %s\n", glGetString (GL_VERSION));
-	printf ("GLSL: %s\n", glGetString (GL_SHADING_LANGUAGE_VERSION));
+	
+	LOG ("Vendor: %s", glGetString (GL_VENDOR));
+	LOG ("Renderer: %s", glGetString (GL_RENDERER));
+	LOG ("Version: %s", glGetString (GL_VERSION));
+	LOG ("GLSL: %s", glGetString (GL_SHADING_LANGUAGE_VERSION));
+	GLint maxSize=0;
+	glGetIntegerv(GL_MAX_3D_TEXTURE_SIZE,&maxSize);
+	CHECK_GL_ERROR();
+	LOG("Texture max size %dx%d",maxSize,maxSize);
 }
 
 static void drawAxis()
@@ -51,21 +63,30 @@ static void drawAxis()
 
 static void display()
 {
+	CHECK_GL_ERROR();
+
+
+	//Sleep(300);
+
+	sgSchedule()->run();
+
+	
+
 	glClearColor(0,0.4,0.6,1);
-	glClear(GL_COLOR_BUFFER_BIT);  
-
+	glClear(GL_COLOR_BUFFER_BIT );  
 	cxGLMatrixMode(CXGL_VIEWMODE);
-
 	cxGLPushMatrix();
 	{
 		cxGLRotatef(sg_rotateX,1,0,0);
 		cxGLRotatef(sg_rotateY,0,1,0);
 		//drawAxis();
-		
+	
+		sgVideo->play();
 		//lightningTest();
-		cubeTest();
-		
+		//cubeTest();
+		//spriteTest();
 		//lightTest();
+		//ffmpegTest();
 	}
 	cxGLPopMatrix();
 
@@ -76,6 +97,7 @@ static void display()
 
 static void reshape (int w, int h)
 {
+	CHECK_GL_ERROR();
 	glViewport (0, 0, (GLsizei) w, (GLsizei) h);
 	cxGLMatrixMode(CXGL_PROJECT);
 	cxGLLoadentity();
@@ -140,6 +162,7 @@ int main(int argc,char** argv)
 
 	CHECK_GL_ERROR();
 	shareGLShaderManager()->init();
+	CHECK_GL_ERROR();
 	// 
 	// 	GLint maxVertexUniforms;
 	// 	glGetIntegerv(GL_MAX_VERTEX_UNIFORM_COMPONENTS, &maxVertexUniforms);
@@ -147,6 +170,12 @@ int main(int argc,char** argv)
 	// 	glGetIntegerv(GL_MAX_FRAGMENT_UNIFORM_COMPONENTS, &maxVertexUniforms);
 
 	lightInit();
+	CHECK_GL_ERROR();
+	sgVideo = new AVVideo();
+
+	AVVideoSampler* sampler = new AVVideoSampler();
+	sampler->_fileName  = "test_hong_zhi_jian.avi";
+	sgVideo->openSampler(sampler);
 
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
@@ -164,7 +193,7 @@ int main(int argc,char** argv)
 
 	
 	glutMainLoop();
-
+	CHECK_GL_ERROR();
 	system("pause");
 	return 0;
 }

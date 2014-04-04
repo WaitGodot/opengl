@@ -62,15 +62,7 @@ namespace glShaderSpace {
 			glAttachShader(m_programIdentity,fragId);
 			BREAK_IF(!link());
 
-			m_glAttributeLoction[_Vertex_Position] = glGetAttribLocation(m_programIdentity,AttributePosition);
-			m_glAttributeLoction[_Vertex_Color]    = glGetAttribLocation(m_programIdentity,AttributeColor);
-			m_glAttributeLoction[_Vertex_texCoords]= glGetAttribLocation(m_programIdentity,AttributeTexCoords);
-			m_glAttributeLoction[_Vertex_Normal]= glGetAttribLocation(m_programIdentity,AttributeNormal);
-			
-			m_glUniformLoction[U_COLOR] = glGetUniformLocation(m_programIdentity,UniformColor);
-			m_glUniformLoction[U_POINTSIZE] = glGetUniformLocation(m_programIdentity,UniformPointSize);
-			m_glUniformLoction[U_MVMATRIX] = glGetUniformLocation(m_programIdentity,UniformMvMatrix);
-			m_glUniformLoction[U_MVPMATRIX] = glGetUniformLocation(m_programIdentity,UniformMvpMatrix);
+			updateUniforms();
 			result = true;
 		} while (0);
 
@@ -201,6 +193,26 @@ namespace glShaderSpace {
 	{
 		m_glLight[m_lightCount] = light;
 		m_lightCount++;
+	}
+
+	void GLShaderProgram::updateUniforms()
+	{
+		this->use();
+
+		m_glAttributeLoction[_Vertex_Position] = glGetAttribLocation(m_programIdentity,AttributePosition);
+		m_glAttributeLoction[_Vertex_Color]    = glGetAttribLocation(m_programIdentity,AttributeColor);
+		m_glAttributeLoction[_Vertex_texCoords]= glGetAttribLocation(m_programIdentity,AttributeTexCoords);
+		m_glAttributeLoction[_Vertex_Normal]= glGetAttribLocation(m_programIdentity,AttributeNormal);
+
+		m_glUniformLoction[U_COLOR] = glGetUniformLocation(m_programIdentity,UniformColor);
+		m_glUniformLoction[U_POINTSIZE] = glGetUniformLocation(m_programIdentity,UniformPointSize);
+		m_glUniformLoction[U_MVMATRIX] = glGetUniformLocation(m_programIdentity,UniformMvMatrix);
+		m_glUniformLoction[U_MVPMATRIX] = glGetUniformLocation(m_programIdentity,UniformMvpMatrix);
+		m_glUniformLoction[U_TEXTURE] = glGetUniformLocation(m_programIdentity,UniformTexture);
+
+		CHECK_GL_ERROR();
+		glUniform1i(m_glUniformLoction[U_TEXTURE],0);// texture 0;0ºÅÎÆÀíµ¥Ôª
+		CHECK_GL_ERROR();
 	}
 
 
