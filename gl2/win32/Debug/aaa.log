@@ -1,0 +1,87 @@
+﻿Build started 2014/12/16 18:32:05.
+     1>Project "E:\workspace\other\opengl\gl2\win32\aaa.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\aaa.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I../Classes /I../Classes/GLTools/include /I../../library/zlib/include /I../../library/png/include /I../../library/pthread/include /I../../library/ffmpeg/include /I../../library/portaudio/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Classes\av\AVVideo.cpp ..\Classes\av\AVVideoDecode.cpp ..\Classes\base\Color.cpp ..\Classes\base\Geometry.cpp ..\Classes\ffmpegTest.cpp ..\Classes\file\FileUtils.cpp ..\Classes\Main.cpp ..\Classes\MainTest.cpp ..\Classes\matrix\Matrix3x3.cpp ..\Classes\matrix\Matrix4x4.cpp ..\Classes\matrix\MatrixPool.cpp ..\Classes\matrix\Vector3.cpp ..\Classes\matrix\Vector4.cpp ..\Classes\shader\GLLight.cpp ..\Classes\shader\GLShaderMgr.cpp ..\Classes\shader\GLShaderProgram.cpp ..\Classes\texture\Image.cpp ..\Classes\texture\Sprite.cpp ..\Classes\texture\Texture.cpp ..\Classes\timer\schedule.cpp ..\Classes\timer\timer.cpp
+         timer.cpp
+         schedule.cpp
+     1>e:\workspace\other\opengl\gl2\classes\macroconfig.h(4): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         Texture.cpp
+     1>e:\workspace\other\opengl\gl2\classes\texture\texture.h(3): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         Sprite.cpp
+     1>e:\workspace\other\opengl\gl2\classes\texture\texture.h(3): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         Image.cpp
+     1>e:\workspace\other\opengl\gl2\classes\macroconfig.h(4): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         GLShaderProgram.cpp
+     1>e:\workspace\other\opengl\gl2\classes\shader\glshaderprogram.h(4): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         GLShaderMgr.cpp
+     1>e:\workspace\other\opengl\gl2\classes\shader\glshaderprogram.h(4): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         GLLight.cpp
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(7): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         Vector4.cpp
+     1>e:\workspace\other\opengl\gl2\classes\macroconfig.h(4): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         Vector3.cpp
+     1>e:\workspace\other\opengl\gl2\classes\macroconfig.h(4): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         MatrixPool.cpp
+     1>e:\workspace\other\opengl\gl2\classes\matrix\matrixpool.h(5): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         Matrix4x4.cpp
+     1>e:\workspace\other\opengl\gl2\classes\matrix\matrix4x4.cpp(27): warning C4002: too many actual parameters for macro 'assert'
+         Matrix3x3.cpp
+     1>e:\workspace\other\opengl\gl2\classes\macroconfig.h(4): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         MainTest.cpp
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(3): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         Main.cpp
+     1>e:\workspace\other\opengl\gl2\classes\main.cpp(3): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         FileUtils.cpp
+     1>e:\workspace\other\opengl\gl2\classes\macroconfig.h(4): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         ffmpegTest.cpp
+     1>e:\workspace\other\opengl\gl2\classes\inttypes.h(16): warning C4005: 'INT64_C' : macro redefinition
+                 e:\workspace\other\opengl\gl2\classes\inttypes.h(12) : see previous definition of 'INT64_C'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(41): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(42): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(63): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(64): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\gl2\classes\texture\texture.h(3): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         Geometry.cpp
+     1>e:\workspace\other\opengl\gl2\classes\shader\glshaderprogram.h(4): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         Color.cpp
+     1>e:\workspace\other\opengl\gl2\classes\base\color.h(4): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         AVVideoDecode.cpp
+     1>e:\workspace\other\opengl\gl2\classes\inttypes.h(16): warning C4005: 'INT64_C' : macro redefinition
+                 e:\workspace\other\opengl\gl2\classes\inttypes.h(12) : see previous definition of 'INT64_C'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(41): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(42): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(63): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(64): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\gl2\classes\macroconfig.h(4): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         Generating Code...
+         Compiling...
+         AVVideo.cpp
+     1>e:\workspace\other\opengl\gl2\classes\inttypes.h(16): warning C4005: 'INT64_C' : macro redefinition
+                 e:\workspace\other\opengl\gl2\classes\inttypes.h(12) : see previous definition of 'INT64_C'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(41): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(42): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(63): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(64): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\frame.h(133): warning C4099: 'AVFrame' : type name first seen using 'class' now seen using 'struct'
+                 e:\workspace\other\opengl\gl2\classes\av\avvideo.h(9) : see declaration of 'AVFrame'
+     1>e:\workspace\other\opengl\gl2\classes\macroconfig.h(4): fatal error C1083: Cannot open include file: 'gl/glew.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "E:\workspace\other\opengl\gl2\win32\aaa.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:04.65

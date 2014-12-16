@@ -1,0 +1,235 @@
+﻿Build started 2014/12/16 18:32:34.
+     1>Project "E:\workspace\other\opengl\gl2\win32\OpenGL.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\gl2.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../Classes /I../Classes/GLTools/include /I../../library/png/include /I../../library/ffmpeg/include /I../../library/portaudio/include /I../../library/pthread/include /I../../library/zlib/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Classes\av\AVVideo.cpp ..\Classes\av\AVVideoDecode.cpp ..\Classes\av\DecodeThread.cpp ..\Classes\base\Color.cpp ..\Classes\base\Geometry.cpp ..\Classes\base\timer.cpp ..\Classes\ffmpegTest.cpp ..\Classes\file\FileUtils.cpp ..\Classes\Main.cpp ..\Classes\MainTest.cpp ..\Classes\matrix\Matrix3x3.cpp ..\Classes\matrix\Matrix4x4.cpp ..\Classes\matrix\MatrixPool.cpp ..\Classes\matrix\Vector3.cpp ..\Classes\matrix\Vector4.cpp ..\Classes\shader\GLLight.cpp ..\Classes\shader\GLShaderMgr.cpp ..\Classes\shader\GLShaderProgram.cpp ..\Classes\texture\Image.cpp ..\Classes\texture\Sprite.cpp ..\Classes\texture\Texture.cpp ..\Classes\timer\schedule.cpp ..\Classes\timer\timer.cpp
+         timer.cpp
+         schedule.cpp
+     1>e:\workspace\other\opengl\gl2\classes\timer\schedule.cpp(35): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         Texture.cpp
+         Sprite.cpp
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(53): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(76): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(102): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Image.cpp
+         GLShaderProgram.cpp
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(53): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(76): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(102): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\glshaderprogram.cpp(121): warning C4002: too many actual parameters for macro '_ASSERT'
+     1>e:\workspace\other\opengl\gl2\classes\shader\glshaderprogram.cpp(127): warning C4002: too many actual parameters for macro '_ASSERT'
+     1>e:\workspace\other\opengl\gl2\classes\shader\glshaderprogram.cpp(180): warning C4002: too many actual parameters for macro 'assert'
+         GLShaderMgr.cpp
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(53): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(76): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(102): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\glshadermgr.cpp(89): warning C4002: too many actual parameters for macro '_ASSERT'
+         GLLight.cpp
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(53): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(76): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(102): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.cpp(50): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         Vector4.cpp
+         Vector3.cpp
+         MatrixPool.cpp
+     1>e:\workspace\other\opengl\gl2\classes\matrix\matrixpool.cpp(31): warning C4002: too many actual parameters for macro 'assert'
+     1>e:\workspace\other\opengl\gl2\classes\matrix\matrixpool.cpp(52): warning C4002: too many actual parameters for macro 'assert'
+     1>e:\workspace\other\opengl\gl2\classes\matrix\matrixpool.cpp(103): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>e:\workspace\other\opengl\gl2\classes\matrix\matrixpool.cpp(220): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         Matrix4x4.cpp
+     1>e:\workspace\other\opengl\gl2\classes\matrix\matrix4x4.cpp(27): warning C4002: too many actual parameters for macro 'assert'
+         Matrix3x3.cpp
+         MainTest.cpp
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(53): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(76): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(102): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\base\color.h(13): warning C4309: 'default argument' : truncation of constant value
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(147): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(149): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(158): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(159): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(160): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(162): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(164): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(166): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(167): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(169): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(171): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(197): warning C4305: '+=' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\maintest.cpp(226): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Main.cpp
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(53): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(76): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(102): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\base\color.h(13): warning C4309: 'default argument' : truncation of constant value
+     1>e:\workspace\other\opengl\gl2\classes\main.cpp(75): warning C4305: 'argument' : truncation from 'double' to 'GLclampf'
+     1>e:\workspace\other\opengl\gl2\classes\main.cpp(104): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         FileUtils.cpp
+     1>e:\workspace\other\opengl\gl2\classes\file\fileutils.cpp(8): warning C4005: 'MAX_PATH' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\minwindef.h(60) : see previous definition of 'MAX_PATH'
+     1>e:\workspace\other\opengl\gl2\classes\file\fileutils.cpp(51): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+         ffmpegTest.cpp
+     1>e:\workspace\other\opengl\gl2\classes\inttypes.h(16): warning C4005: 'INT64_C' : macro redefinition
+                 e:\workspace\other\opengl\gl2\classes\inttypes.h(12) : see previous definition of 'INT64_C'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(41): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(42): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(63): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(64): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(33): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(34): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(73): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(91): warning C4996: 'avcodec_alloc_frame': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3422) : see declaration of 'avcodec_alloc_frame'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(95): warning C4996: 'avcodec_alloc_frame': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3422) : see declaration of 'avcodec_alloc_frame'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(213): warning C4244: 'return' : conversion from 'uint64_t' to 'int', possible loss of data
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(272): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(279): warning C4996: 'avcodec_alloc_frame': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3422) : see declaration of 'avcodec_alloc_frame'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(309): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(350): warning C4996: 'avcodec_free_frame': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3447) : see declaration of 'avcodec_free_frame'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(391): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(396): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(410): warning C4996: 'avcodec_alloc_frame': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3422) : see declaration of 'avcodec_alloc_frame'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(415): warning C4996: 'avcodec_get_frame_defaults': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3432) : see declaration of 'avcodec_get_frame_defaults'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(452): warning C4996: 'avcodec_free_frame': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3447) : see declaration of 'avcodec_free_frame'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(503): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(509): warning C4996: 'avcodec_alloc_frame': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3422) : see declaration of 'avcodec_alloc_frame'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(590): warning C4996: 'avcodec_free_frame': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3447) : see declaration of 'avcodec_free_frame'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(604): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(627): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(682): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(688): warning C4996: 'avcodec_alloc_frame': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3422) : see declaration of 'avcodec_alloc_frame'
+     1>e:\workspace\other\opengl\gl2\classes\ffmpegtest.cpp(732): warning C4996: 'avcodec_free_frame': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3447) : see declaration of 'avcodec_free_frame'
+         timer.cpp
+         Geometry.cpp
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(53): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(76): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\shader\gllight.h(102): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>e:\workspace\other\opengl\gl2\classes\base\color.h(13): warning C4309: 'default argument' : truncation of constant value
+         Color.cpp
+     1>e:\workspace\other\opengl\gl2\classes\base\color.h(13): warning C4309: 'default argument' : truncation of constant value
+     1>e:\workspace\other\opengl\gl2\classes\base\color.cpp(8): warning C4309: '=' : truncation of constant value
+     1>e:\workspace\other\opengl\gl2\classes\base\color.cpp(13): warning C4244: '=' : conversion from 'float' to 'GLbyte', possible loss of data
+     1>e:\workspace\other\opengl\gl2\classes\base\color.cpp(14): warning C4244: '=' : conversion from 'float' to 'GLbyte', possible loss of data
+     1>e:\workspace\other\opengl\gl2\classes\base\color.cpp(15): warning C4244: '=' : conversion from 'float' to 'GLbyte', possible loss of data
+     1>e:\workspace\other\opengl\gl2\classes\base\color.cpp(16): warning C4244: '=' : conversion from 'float' to 'GLbyte', possible loss of data
+         Generating Code...
+         Compiling...
+         DecodeThread.cpp
+         AVVideoDecode.cpp
+     1>e:\workspace\other\opengl\gl2\classes\inttypes.h(16): warning C4005: 'INT64_C' : macro redefinition
+                 e:\workspace\other\opengl\gl2\classes\inttypes.h(12) : see previous definition of 'INT64_C'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(41): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(42): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(63): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(64): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\gl2\classes\av\avvideodecode.cpp(131): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\workspace\other\opengl\gl2\classes\av\avvideodecode.cpp(152): warning C4996: 'avcodec_alloc_frame': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3422) : see declaration of 'avcodec_alloc_frame'
+     1>e:\workspace\other\opengl\gl2\classes\av\avvideodecode.cpp(191): warning C4996: 'avcodec_alloc_frame': was declared deprecated
+                 e:\workspace\other\opengl\library\ffmpeg\include\libavcodec\avcodec.h(3422) : see declaration of 'avcodec_alloc_frame'
+         AVVideo.cpp
+     1>e:\workspace\other\opengl\gl2\classes\inttypes.h(16): warning C4005: 'INT64_C' : macro redefinition
+                 e:\workspace\other\opengl\gl2\classes\inttypes.h(12) : see previous definition of 'INT64_C'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(41): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(42): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(63): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\timestamp.h(64): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(349) : see declaration of '_snprintf'
+     1>e:\workspace\other\opengl\library\ffmpeg\include\libavutil\frame.h(133): warning C4099: 'AVFrame' : type name first seen using 'class' now seen using 'struct'
+                 e:\workspace\other\opengl\gl2\classes\av\avvideo.h(9) : see declaration of 'AVFrame'
+     1>e:\workspace\other\opengl\gl2\classes\av\avvideo.cpp(71): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\workspace\other\opengl\build\Debug\gl2.exe" /INCREMENTAL /NOLOGO /LIBPATH:../../library/ffmpeg/lib /LIBPATH:../../library/png/lib/windows/x86 /LIBPATH:../../library/pthread/lib /LIBPATH:../../library/zlib/lib/windows/x86 glew32.lib freeglut_static.lib avcodec.lib avdevice.lib avfilter.lib avformat.lib avutil.lib postproc.lib swresample.lib swscale.lib libpng16.lib pthreadVCE2.lib zlib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\workspace\other\opengl\build\Debug\gl2.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\workspace\other\opengl\build\Debug\gl2.lib" /MACHINE:X86 Debug\AVVideo.obj
+         Debug\AVVideoDecode.obj
+         Debug\DecodeThread.obj
+         Debug\Color.obj
+         Debug\Geometry.obj
+         Debug\timer.obj
+         Debug\ffmpegTest.obj
+         Debug\FileUtils.obj
+         Debug\Main.obj
+         Debug\MainTest.obj
+         Debug\Matrix3x3.obj
+         Debug\Matrix4x4.obj
+         Debug\MatrixPool.obj
+         Debug\Vector3.obj
+         Debug\Vector4.obj
+         Debug\GLLight.obj
+         Debug\GLShaderMgr.obj
+         Debug\GLShaderProgram.obj
+         Debug\Image.obj
+         Debug\Sprite.obj
+         Debug\Texture.obj
+         Debug\schedule.obj
+         Debug\timer.obj
+     1>Debug\timer.obj : warning LNK4042: object specified more than once; extras ignored
+         libpng16.lib(png.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+     1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
+     1>AVVideo.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+     1>Debug\timer.obj : warning LNK4042: object specified more than once; extras ignored
+         Generating code
+         Finished generating code
+     1>libpng16.lib(png.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(png.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngread.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngread.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngrio.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngrio.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngerror.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngerror.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngget.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngget.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngwrite.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngwrite.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngmem.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngmem.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngrutil.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngrutil.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngrtran.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngrtran.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngtrans.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngtrans.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngset.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngset.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngwutil.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngwutil.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngwio.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngwio.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>libpng16.lib(pngwtran.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'libpng16.lib(pngwtran.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>zlib.lib(adler32.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(adler32.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>zlib.lib(crc32.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(crc32.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>zlib.lib(deflate.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(deflate.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>zlib.lib(inffast.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(inffast.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>zlib.lib(inflate.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(inflate.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>zlib.lib(inftrees.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(inftrees.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>zlib.lib(trees.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(trees.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+     1>zlib.lib(zutil.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'zlib.lib(zutil.obj)' or at 'E:\workspace\other\opengl\build\Debug\vc100.pdb'; linking object as if no debug info
+         OpenGL.vcxproj -> E:\workspace\other\opengl\build\Debug\gl2.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\gl2.unsuccessfulbuild".
+         Touching "Debug\gl2.lastbuildstate".
+     1>Done Building Project "E:\workspace\other\opengl\gl2\win32\OpenGL.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:14.00

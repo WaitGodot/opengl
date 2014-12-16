@@ -1,0 +1,54 @@
+﻿Build started 2014/12/16 18:34:35.
+     1>Project "E:\workspace\other\opengl\glTools\win32\glTools.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\glTools.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../Classes/GLTools/include /I../Classes /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Classes\GLTools\src\GLBatch.cpp ..\Classes\GLTools\src\GLShaderManager.cpp ..\Classes\GLTools\src\GLTools.cpp ..\Classes\GLTools\src\GLTriangleBatch.cpp ..\Classes\GLTools\src\math3d.cpp ..\Classes\Main.cpp
+         Main.cpp
+     1>e:\workspace\other\opengl\gltools\classes\main.cpp(37): warning C4305: 'argument' : truncation from 'double' to 'GLclampf'
+         math3d.cpp
+         GLTriangleBatch.cpp
+         GLTools.cpp
+     1>e:\workspace\other\opengl\gltools\classes\gltools\src\gltools.cpp(858): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\workspace\other\opengl\gltools\classes\gltools\src\gltools.cpp(904): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\workspace\other\opengl\gltools\classes\gltools\src\gltools.cpp(1046): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>e:\workspace\other\opengl\gltools\classes\gltools\src\gltools.cpp(1128): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+         GLShaderManager.cpp
+     1>e:\workspace\other\opengl\gltools\classes\gltools\src\glshadermanager.cpp(538): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>e:\workspace\other\opengl\gltools\classes\gltools\src\glshadermanager.cpp(539): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>e:\workspace\other\opengl\gltools\classes\gltools\src\glshadermanager.cpp(565): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>e:\workspace\other\opengl\gltools\classes\gltools\src\glshadermanager.cpp(566): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>e:\workspace\other\opengl\gltools\classes\gltools\src\glshadermanager.cpp(665): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>e:\workspace\other\opengl\gltools\classes\gltools\src\glshadermanager.cpp(666): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>e:\workspace\other\opengl\gltools\classes\gltools\src\glshadermanager.cpp(752): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>e:\workspace\other\opengl\gltools\classes\gltools\src\glshadermanager.cpp(753): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+         GLBatch.cpp
+         Generating Code...
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\workspace\other\opengl\build\Debug\glTools.exe" /INCREMENTAL /NOLOGO glew32.lib freeglut_static.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\workspace\other\opengl\build\Debug\glTools.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\workspace\other\opengl\build\Debug\glTools.lib" /MACHINE:X86 Debug\GLBatch.obj
+         Debug\GLShaderManager.obj
+         Debug\GLTools.obj
+         Debug\GLTriangleBatch.obj
+         Debug\math3d.obj
+         Debug\Main.obj
+         glTools.vcxproj -> E:\workspace\other\opengl\build\Debug\glTools.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\glTools.unsuccessfulbuild".
+         Touching "Debug\glTools.lastbuildstate".
+     1>Done Building Project "E:\workspace\other\opengl\glTools\win32\glTools.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.08

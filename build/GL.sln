@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gl1", "..\gl1\win32\bbb.vcxproj", "{74730823-E5BF-41C3-A99D-F47214C9100D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gl2", "..\gl2\win32\OpenGL.vcxproj", "{1904E906-53DC-4D17-9154-9A5BD8529EA0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glTools", "..\glTools\win32\glTools.vcxproj", "{2D7DAC9D-C493-4D70-8B9A-537991F5475F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74730823-E5BF-41C3-A99D-F47214C9100D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{74730823-E5BF-41C3-A99D-F47214C9100D}.Debug|Win32.Build.0 = Debug|Win32
+		{74730823-E5BF-41C3-A99D-F47214C9100D}.Release|Win32.ActiveCfg = Release|Win32
+		{74730823-E5BF-41C3-A99D-F47214C9100D}.Release|Win32.Build.0 = Release|Win32
+		{1904E906-53DC-4D17-9154-9A5BD8529EA0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1904E906-53DC-4D17-9154-9A5BD8529EA0}.Debug|Win32.Build.0 = Debug|Win32
+		{1904E906-53DC-4D17-9154-9A5BD8529EA0}.Release|Win32.ActiveCfg = Release|Win32
+		{1904E906-53DC-4D17-9154-9A5BD8529EA0}.Release|Win32.Build.0 = Release|Win32
+		{2D7DAC9D-C493-4D70-8B9A-537991F5475F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2D7DAC9D-C493-4D70-8B9A-537991F5475F}.Debug|Win32.Build.0 = Debug|Win32
+		{2D7DAC9D-C493-4D70-8B9A-537991F5475F}.Release|Win32.ActiveCfg = Release|Win32
+		{2D7DAC9D-C493-4D70-8B9A-537991F5475F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

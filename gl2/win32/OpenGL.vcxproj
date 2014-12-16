@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1904E906-53DC-4D17-9154-9A5BD8529EA0}</ProjectGuid>
+    <RootNamespace>OpenGL</RootNamespace>
+    <ProjectName>gl2</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../Classes;../Classes/GLTools/include;../../library/png/include;../../library/ffmpeg/include;../../library/portaudio/include;../../library/pthread/include;../../library/zlib/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glew32.lib;freeglut_static.lib;avcodec.lib;avdevice.lib;avfilter.lib;avformat.lib;avutil.lib;postproc.lib;swresample.lib;swscale.lib;libpng16.lib;pthreadVCE2.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../library/ffmpeg/lib;../../library/png/lib/windows/x86;../../library/pthread/lib;../../library/zlib/lib/windows/x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\av\AVVideo.cpp" />
+    <ClCompile Include="..\Classes\av\AVVideoDecode.cpp" />
+    <ClCompile Include="..\Classes\av\DecodeThread.cpp" />
+    <ClCompile Include="..\Classes\base\Color.cpp" />
+    <ClCompile Include="..\Classes\base\Geometry.cpp" />
+    <ClCompile Include="..\Classes\base\timer.cpp" />
+    <ClCompile Include="..\Classes\ffmpegTest.cpp" />
+    <ClCompile Include="..\Classes\file\FileUtils.cpp" />
+    <ClCompile Include="..\Classes\Main.cpp" />
+    <ClCompile Include="..\Classes\MainTest.cpp" />
+    <ClCompile Include="..\Classes\matrix\Matrix3x3.cpp" />
+    <ClCompile Include="..\Classes\matrix\Matrix4x4.cpp" />
+    <ClCompile Include="..\Classes\matrix\MatrixPool.cpp" />
+    <ClCompile Include="..\Classes\matrix\Vector3.cpp" />
+    <ClCompile Include="..\Classes\matrix\Vector4.cpp" />
+    <ClCompile Include="..\Classes\shader\GLLight.cpp" />
+    <ClCompile Include="..\Classes\shader\GLShaderMgr.cpp" />
+    <ClCompile Include="..\Classes\shader\GLShaderProgram.cpp" />
+    <ClCompile Include="..\Classes\texture\Image.cpp" />
+    <ClCompile Include="..\Classes\texture\Sprite.cpp" />
+    <ClCompile Include="..\Classes\texture\Texture.cpp" />
+    <ClCompile Include="..\Classes\timer\schedule.cpp" />
+    <ClCompile Include="..\Classes\timer\timer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\av\AVVideo.h" />
+    <ClInclude Include="..\Classes\av\AVVideoDecode.h" />
+    <ClInclude Include="..\Classes\av\AVVideoSampler.h" />
+    <ClInclude Include="..\Classes\av\decodeThread.h" />
+    <ClInclude Include="..\Classes\base\Color.h" />
+    <ClInclude Include="..\Classes\base\Geometry.h" />
+    <ClInclude Include="..\Classes\base\timer.h" />
+    <ClInclude Include="..\Classes\file\Fileutils.h" />
+    <ClInclude Include="..\Classes\inttypes.h" />
+    <ClInclude Include="..\Classes\MainTest.h" />
+    <ClInclude Include="..\Classes\matrix\Matrix3x3.h" />
+    <ClInclude Include="..\Classes\matrix\Matrix4x4.h" />
+    <ClInclude Include="..\Classes\matrix\MatrixPool.h" />
+    <ClInclude Include="..\Classes\matrix\Vector3.h" />
+    <ClInclude Include="..\Classes\matrix\Vector4.h" />
+    <ClInclude Include="..\Classes\shader\GLLight.h" />
+    <ClInclude Include="..\Classes\MacroConfig.h" />
+    <ClInclude Include="..\Classes\shader\GLShaderProgram.h" />
+    <ClInclude Include="..\Classes\shader\GLShaderMgr.h" />
+    <ClInclude Include="..\Classes\stdint.h" />
+    <ClInclude Include="..\Classes\texture\Image.h" />
+    <ClInclude Include="..\Classes\texture\Sprite.h" />
+    <ClInclude Include="..\Classes\texture\Texture.h" />
+    <ClInclude Include="..\Classes\timer\schedule.h" />
+    <ClInclude Include="..\Classes\timer\timer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resouces\shaders\light.frag" />
+    <None Include="..\Resouces\shaders\light.vert" />
+    <None Include="..\Resouces\shaders\position.frag" />
+    <None Include="..\Resouces\shaders\position.vert" />
+    <None Include="..\Resouces\shaders\readme.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
